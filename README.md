@@ -48,4 +48,34 @@ Note - We will Targeting JVM to learn Kotlin Concept
 * CHARACTER (Char , String)
   - we can not assign another data type value into different data type variable
   - single quote for Char use
-
+# Operators
+ * Arithmetic Operators
+    - `+ - * /` (Maths)
+    - Modulus Operator (%)
+       - Example - 13 % 2 = 1
+    - Integer operation gives result integer only
+       - Example - 13 / 2 = 6
+ * Relational Operators
+    - Greater Than (>)
+    - Less Than (<)
+    - Greater than Equal To (>=)
+    - Less Than Equal To (<=)
+    - Equals (==) - Double Equal vs Single Equal
+    - Not Equals (!=)
+ * Increment and Decrement Operator
+    - i++
+      - use value of i before increment
+    - ++i
+      - first increment the value of i then use
+    - Similarly, Decrement Operator i-- & --i
+ * Logical Operators 
+   - &  (AND) 
+     - if both condition are true and result will be true
+   - || (OR)
+     - if one of the condition is true and result will be true
+   - !  (NOT)
+ * Short circuting
+   - if first condition is true than does not evaluate next condetion in or(||) operator
+   - if first condition is false then does not evaluate next condition in AND(&) operator
+ * Not Operator
+   - 
