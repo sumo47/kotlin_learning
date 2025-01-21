@@ -78,4 +78,15 @@ Note - We will Targeting JVM to learn Kotlin Concept
    - if first condition is true than does not evaluate next condetion in or(||) operator
    - if first condition is false then does not evaluate next condition in AND(&) operator
  * Not Operator
-   - 
+   - negate the value
+# IF-ELSE
+ * If it is raining - take umbrella
+ * Otherwise - No Rains - You can enjoy your day
+   - if(condition){
+   -    run this code if condition is true
+   - }
+   - else {
+   -    run this code if condition is false
+   - }
+ * we can use if-else as statement in kotlin
+ * 
