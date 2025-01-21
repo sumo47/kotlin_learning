@@ -37,3 +37,15 @@ Note - We will Targeting JVM to learn Kotlin Concept
        println("Welcome to CheezyCode")
      }
   ```
+# Variable
+  - var ca be reassigned.
+  - val can't be reassigned.
+  
+# Data Types
+* INTEGER (Byte, Short , Int , Long)
+* FLOATING POINT (Float, Double)
+* BOOLEAN (True , False)
+* CHARACTER (Char , String)
+  - we can not assign another data type value into different data type variable
+  - single quote for Char use
+
