@@ -89,4 +89,10 @@ Note - We will Targeting JVM to learn Kotlin Concept
    -    run this code if condition is false
    - }
  * we can use if-else as statement in kotlin
- * 
+# Range (.. & until)
+ * .. = 1..5 // 1, 2, 3, 4, 5
+ * until = 1 until 5  // 1, 2, 3, 4 
+# When statement and expression
+ * when state is replacement of if-else statement
+ * it is readable compare to if=else statement
+ * we can use when statement as an expression
