@@ -92,7 +92,25 @@ Note - We will Targeting JVM to learn Kotlin Concept
 # Range (.. & until)
  * .. = 1..5 // 1, 2, 3, 4, 5
  * until = 1 until 5  // 1, 2, 3, 4 
+   - upper bond not included
+ * downTo = iteration in desending order
+    - ex = 
+  ```kotlin
+  for (i in 10 downTo 1 step 2){
+    println(i) // 10 8 6 4 2
+  }
+  ```
+ * Step = inctrement in for loop 
+    - ex -
+   ``` kotlin
+   for (i in 1..5 step 2){
+    print(i) // 1,3,5
+   }
+    ```
 # When statement and expression
  * when state is replacement of if-else statement
  * it is readable compare to if=else statement
  * we can use when statement as an expression
+# Loops
+ * Execute set of statements multiple times
+ * E.g. Print hello sumit 5 times
