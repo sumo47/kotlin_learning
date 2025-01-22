@@ -114,3 +114,42 @@ Note - We will Targeting JVM to learn Kotlin Concept
 # Loops
  * Execute set of statements multiple times
  * E.g. Print hello sumit 5 times
+# Function
+ * Functions and its different flavors
+   - Block of code to perform certain functionality
+   - Helps to reuse code
+     ```kotlin
+     fun methodname
+     {
+      // Block of code
+     }
+     ``` 
+     ```kotlin
+     fun functionName(parameter1:dataType, parameter2:DataType...):ReturnType
+     {
+      //Block of Statement
+      return result
+     }
+     ```
+ * Single Line Function
+  ```kotlin
+  fun OneLineAdd (num1: Int, num2: Int) : Int = num1 + num2
+  ```
+ * Default Arguments
+```kotlin
+  fun PrintMessage(count:Int = 2){
+    // count = 4 // the parameter is val type variable
+    for (i in 1..count){
+        println("Hello $i")
+    }
+}
+```
+ * Unit Functions
+```kotlin
+fun OddOrEven (num1:Int){ // this function return Unit type
+    val result = if (num1 % 2 == 0) "Even" else "Odd"
+    println(result)
+}
+```
+ 
+  
