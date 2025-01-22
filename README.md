@@ -186,3 +186,23 @@ var arr = arrayOf("One", "Two", "Three")
      - If I want to store 50 favorite songs of a user
      - Defining 50 variables will be a mess
      - To solve these kinds of problems we have Arrays
+* functions of Array
+```kotlin
+    println(arr[0]) // first element of array will print
+    println(arr.get(1)) // second element of array will print
+    arr.set(0,"Hello") // frist element will replaced by "Hello"
+    println(arr.size) // size of element
+``` 
+# Classed & Objects
+* Classes and Objects
+  - OOP - Object Oriented Programming.
+  - Paradigm which allows us to solve problems with the help of objects which represents the real world entities.
+  - Class is a blueprint of template
+  - Objects are the real thing.
+  - You creare objects in your program and they interact with each other to complete the work
+  - DESIGN A CLASS 
+    - Properties of Fields (Object Knows)
+    - Methods (Object Does)
+    - ex - if we have switch than in class we have -- isOn , Color , Company , On(), Off()
+* how to use them in kotlin?
+* 
