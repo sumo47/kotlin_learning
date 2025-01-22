@@ -174,4 +174,15 @@ var fn = ::multiplication;
 ```kotlin
     var ad  : (a:Double, b:Double) -> Double = ::addition
 ```
-  
+# Array
+ * What is and Array
+    - Object that stores multiple values of same type
+    - Fixed Size 
+    - ex - 
+```kotlin
+var arr = arrayOf("One", "Two", "Three")
+```   
+ * Use of an Array
+     - If I want to store 50 favorite songs of a user
+     - Defining 50 variables will be a mess
+     - To solve these kinds of problems we have Arrays
