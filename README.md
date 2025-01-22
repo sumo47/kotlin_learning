@@ -205,4 +205,9 @@ var arr = arrayOf("One", "Two", "Three")
     - Methods (Object Does)
     - ex - if we have switch than in class we have -- isOn , Color , Company , On(), Off()
 * how to use them in kotlin?
-* 
+# CONSTRUCTORS
+ * Class has 2 things - Properties & Methods
+ * Initialize object & provide default values to Properties
+ * `init` - create CONSTRUCTOR
+ *` constructor` - create default constructor overloading
+ * 
