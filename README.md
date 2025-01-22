@@ -151,5 +151,27 @@ fun OddOrEven (num1:Int){ // this function return Unit type
     println(result)
 }
 ```
- 
+# Function Overloading
+* Function overloading
+   - Same Name different parameters
+     - Either number of parameters is different
+     - Or Type is different
+```kotlin
+  fun addition (a:Int, b:Int):Int = a+b;
+
+  fun addition (a:Double, b:Double):Double = a+b;
+```
+* Named Arguments
+```kotlin
+    val result1 = addition(a = 5,b = 6)
+```
+* Function Type
+  - store function in variable
+```kotlin
+var fn = ::multiplication;
+```
+  - store function type explicitly
+```kotlin
+    var ad  : (a:Double, b:Double) -> Double = ::addition
+```
   
