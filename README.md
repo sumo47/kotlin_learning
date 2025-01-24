@@ -210,4 +210,40 @@ var arr = arrayOf("One", "Two", "Three")
  * Initialize object & provide default values to Properties
  * `init` - create CONSTRUCTOR
  *` constructor` - create default constructor overloading
- * 
+ * Default Constructor - if we define a class and does not define constructor than kotlin add default paramaeter-less constructor . we call call it like 
+```kotlin
+val ob = calculator()
+```
+ * Getter Setter
+   - whenever we write Properties in class , kotlin bind getter and setter function into it (set(value), get() = field)
+   - in class we use set function to set the value of variable -
+   - for getter function we use get function 
+   - eg - 
+```kotlin
+  class Person(nameParam:String, ageParam:Int){
+
+    // getter
+    var name:String = nameParam
+    get(){
+      return field = toUpperCase()
+    }
+
+    // setter 
+    var age:Int = ageParam // dont terminate this line using ; (semicolon)
+    set(value){
+      if(value > 0){
+        field = value
+      }else{
+        println("Age can't be negative")
+      }
+    }
+  }
+```
+
+ * lateinit - 
+   - variable must be Initialize in class
+   - with the help of lateinit we can create variable without Initialize
+   - eg - 
+```kotlin
+lateinit var message:String;
+```
