@@ -247,3 +247,20 @@ val ob = calculator()
 ```kotlin
 lateinit var message:String;
 ```
+# INHERITANCE
+ * What is INHERITANCE
+   - Literal meaning - derive ( a quality , characteristic, or pradiposition ) genetically from one's parents or ancestors.
+   - ex - 
+     - Car is a Vehicle, Truck is a Vehicle
+       - we can create parent class for Vehicle and child class for Car and Truck
+     - Square is a Shape, Circle is a Shape
+     - Cat is an Animal, Dog is an Animal
+     - Saving Account, Current Account, Credit Card Account
+     - Full Time Employee, Part Time Employee
+   - in kotlin only one parent exist for child 
+ * syntax 
+   - open keyword (class A:B())
+ * Summary
+   - Code Reusability
+   - cannot inherit from multiple Classes
+   - Parent class constructor is called before child class
