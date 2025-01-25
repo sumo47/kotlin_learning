@@ -264,3 +264,66 @@ lateinit var message:String;
    - Code Reusability
    - cannot inherit from multiple Classes
    - Parent class constructor is called before child class
+# Overriding
+ * Overriding
+   - which fun/properties want to override we should mark open with `open` keyword
+```kotlin
+open class Mobile(){
+  open val name : String = ""; // properties can be override
+  open fun display() = println("Simple Mobile display") // function can now able to override in child class
+}
+```
+   - where we want to override we have to use override keyword 
+```kotlin
+class OnePlus : Mobile(){
+    override val name:String = "OnePlus mobile"; // OnePlus mobile 
+    override fun display() = println("OnePlus display") // OnePlus display
+}
+```
+ * Calling Parameterized Contructores
+   - if we inherit any Parameterized class than we have to write all parameterized properties in child class
+   - ex - 
+```kotlin
+open class Mobile(val type:String){
+
+}
+
+class OnePlus : Mobile("SmartPhone"){
+
+}
+```
+   - we can dynamicaly pass parameter in parent class
+```kotlin
+open class Mobile(val type:String){
+
+}
+
+class OnePlus(typeParam:String) : Mobile(typeParam){
+
+}
+```
+  - `super` - we can use parent properties in child class using `super` keyword
+```kotlin
+open class Mobile(){ // parent class
+  open fun display() = println("Simple Mobile Display")
+}
+class OnePlus : Mobile(){ // child class
+  override fun display(){
+    super.display() // Simple Mobile Display
+    println("OnePlus Display")
+  }
+}
+```
+ * Getter/Setter Override
+ * Any Type
+   - Yes, in Kotlin, the superclass of all classes is Any. 
+   - If you don't specify a superclass explicitly, your class will implicitly inherit from Any.
+   - Any provides three methods: `equals()`, `hashCode()`, and `toString()`.
+   - Therefore, all Kotlin classes have these methods by default.
+   - override `toString()`
+```kotlin
+override fun toString(): String {
+  return "Name - $name - Size - $size"
+}
+```
+
