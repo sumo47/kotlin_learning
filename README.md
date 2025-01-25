@@ -284,23 +284,15 @@ class OnePlus : Mobile(){
    - if we inherit any Parameterized class than we have to write all parameterized properties in child class
    - ex - 
 ```kotlin
-open class Mobile(val type:String){
+open class Mobile(val type:String){}
 
-}
-
-class OnePlus : Mobile("SmartPhone"){
-
-}
+class OnePlus : Mobile("SmartPhone"){}
 ```
    - we can dynamicaly pass parameter in parent class
 ```kotlin
-open class Mobile(val type:String){
+open class Mobile(val type:String){}
 
-}
-
-class OnePlus(typeParam:String) : Mobile(typeParam){
-
-}
+class OnePlus(typeParam:String) : Mobile(typeParam){}
 ```
   - `super` - we can use parent properties in child class using `super` keyword
 ```kotlin
@@ -326,4 +318,10 @@ override fun toString(): String {
   return "Name - $name - Size - $size"
 }
 ```
-
+# Polymorphism 
+* what is Polymorphism ?
+   - parent can hold refrence to it's child and call method to it's child classes
+   - parent can call methods of child classes (which are common)
+* Advantages of Polymorphism
+  - Helps to write Maintainable & Extensible Code 
+  - helps in interacting with objects via common interface
