@@ -325,3 +325,14 @@ override fun toString(): String {
 * Advantages of Polymorphism
   - Helps to write Maintainable & Extensible Code 
   - helps in interacting with objects via common interface
+# Polymorphism more
+* More about Polymorphism
+   * Poly means Many & Morph means Form
+   * In computer Science, it is defined as - method name is some but it will behave differently based on the object.
+   * INHERITANCE & POLYMORPHISM
+    - IS-A relationship (Circle is a Shape)
+    - So whereever Shape is required, we can any of subclasses i.e. we can easily pass Circle, Square or Triangle. Because they all inherit from Shape
+    - but we cannot pass Shape Object where Circle is require. Because all shapes are not circle.
+* method Calling
+   - when we call any method , compiler checks firstly in `subclass` and then checks in `Superclass` then checks in `Any` class
+   - Any <--- SuperClass <--- SubClass
