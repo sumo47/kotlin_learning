@@ -358,4 +358,23 @@ override fun toString(): String {
   - Interface can implement other interfaces and one class can implement many interface but class can have only one superclass.
 
 # Type Checking & Smart Casting
- - 
+
+# Visibility Modifiers
+* Top level declarations
+  * Public - 
+    - Everywhare
+  * Internal
+    - with in a module ( with in project)
+  * Protected
+    - With in file
+  * Private
+    - N/A
+* Class Members
+  * Public - 
+    - Everywhare
+  * Internal
+    - with in a module
+  * Protected
+    - With in class
+  * Private
+    - Subclasses
