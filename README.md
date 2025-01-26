@@ -336,3 +336,11 @@ override fun toString(): String {
 * method Calling
    - when we call any method , compiler checks firstly in `subclass` and then checks in `Superclass` then checks in `Any` class
    - Any <--- SuperClass <--- SubClass
+  
+# Abstract Class
+ * Abstract Class
+ * Need of Abstract Class
+ * Abstract methods
+   - Class ( Abstract class ) can't be instantiated
+   - Abstract class can have both abstract and not abstract properties & methods
+   - if a class has abstract method or property then class must be declared as abstract
