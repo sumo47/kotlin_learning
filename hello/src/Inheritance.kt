@@ -1,11 +1,10 @@
-fun main(){
+fun main() {
 
-    val objChild = Child();
+    val objChild = Child()
     objChild.MyMethod()
     objChild.MyMethod()
     objChild.name2
     objChild.name
-
 }
 
 open class Parent {
@@ -13,21 +12,21 @@ open class Parent {
         println("Parent's Constructor called")
     }
 
-    val name:String= "";
+    val name: String = ""
 
-    fun MyMethod(){
+    fun MyMethod() {
         println("I am in Parent")
     }
 }
 
-class Child : Parent(){
+class Child : Parent() {
     init {
         println("Child's Constructor called")
     }
 
-    val name2:String = "";
+    val name2: String = ""
 
-    fun MyMethod2(){
+    fun MyMethod2() {
         println("I am in child ")
     }
 }

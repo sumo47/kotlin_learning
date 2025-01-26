@@ -24,7 +24,7 @@ fun main() {
     // i++ // 14
     // ++i // 14
 
-    println(i++ + ++i); // 13 + 15 = 28
+    println(i++ + ++i) // 13 + 15 = 28
 
     // Logical Operator
     val above70 = false
@@ -32,18 +32,17 @@ fun main() {
 
     // & AND
     var calledForInterview = above70 && knowsProgramming
-    println(calledForInterview);
+    println(calledForInterview)
 
     // || OR
     calledForInterview = above70 || knowsProgramming
-    println(calledForInterview);
+    println(calledForInterview)
 
     // SHORT OPERATOR // have to explore more
-    var s = 10;
-    var t = 11;
+    var s = 10
+    var t = 11
 
-    var result = s == 11 || t++ == 11;
-    println(s);
-    println(t);
-
+    var result = s == 11 || t++ == 11
+    println(s)
+    println(t)
 }

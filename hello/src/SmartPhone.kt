@@ -1,5 +1,5 @@
 class SmartPhone : Phone() {
-    fun playMovie(){};
-    fun takePicture(){};
-    fun getLocation(){};
+    fun playMovie() {}
+    fun takePicture() {}
+    fun getLocation() {}
 }

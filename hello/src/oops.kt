@@ -1,5 +1,5 @@
-fun main (){
-    val mustang = Car("mustang", "Petrol", 100 )
+fun main() {
+    val mustang = Car("mustang", "Petrol", 100)
     val beetle = Car("beetle", "diesel", 200)
 
     mustang.driveCar()
@@ -8,12 +8,12 @@ fun main (){
     println(beetle.KmRan)
 }
 
-class Car (val name:String,val type:String, var KmRan:Int ) // Properties
+class Car(val name: String, val type: String, var KmRan: Int) // Properties
 {
-    fun driveCar(){ // Method
+    fun driveCar() { // Method
         println("Car is driving")
     }
-    fun ApplyBreak(){
+    fun ApplyBreak() {
         println("Applied Break")
     }
 }

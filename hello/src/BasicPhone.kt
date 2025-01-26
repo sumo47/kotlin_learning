@@ -1,3 +1,3 @@
-class BasicPhone  :Phone(){
-    fun getScreenInfo(){};
+class BasicPhone : Phone() {
+    fun getScreenInfo() {}
 }
