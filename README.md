@@ -325,6 +325,7 @@ override fun toString(): String {
 * Advantages of Polymorphism
   - Helps to write Maintainable & Extensible Code 
   - helps in interacting with objects via common interface
+  
 # Polymorphism more
 * More about Polymorphism
    * Poly means Many & Morph means Form
@@ -344,6 +345,7 @@ override fun toString(): String {
    - Class ( Abstract class ) can't be instantiated
    - Abstract class can have both abstract and not abstract properties & methods
    - if a class has abstract method or property then class must be declared as abstract
+  
 # Interface
 * Interface
 * Need of Interface
@@ -354,4 +356,6 @@ override fun toString(): String {
   - Interfaces are meant for behaviors. Classes which exihibits  that behavior implements that interface.
   - Interface can have both abstract and concrete methods.
   - Interface can implement other interfaces and one class can implement many interface but class can have only one superclass.
-  - 
+
+# Type Checking & Smart Casting
+ - 
