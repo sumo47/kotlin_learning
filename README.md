@@ -378,3 +378,16 @@ override fun toString(): String {
     - With in class
   * Private
     - Subclasses
+  
+# Object 
+ * object keyword
+ * Object Declaration and Expression
+   - Class and it's Single Object is created at once.
+   - No constructors are allowed (init block is allowed)
+   - Singleton Pattern
+     - is use to create single object
+   - You can inherit class/interface.
+ * Object Expression
+   - Anonymous Objects using object keyword.
+   - Replacement of java's Anonymous Inner Class.
+   - 
