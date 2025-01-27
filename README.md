@@ -468,5 +468,7 @@ class Blue (val points: Int):Tile()
     val value = gender2!!.uppercase()
 ```
 
-
+# Exception Handling
+* Try catch Finally
+* Throw Exceptions
 
