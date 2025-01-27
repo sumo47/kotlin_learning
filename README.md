@@ -434,3 +434,24 @@ p3 = p1.copy(id = 5)
 val (id, name) = p1
 val id = p1.component1()
 ```
+# Enum classes , Sealed Classes
+* we can assign set of constant value in variable
+```kotlin
+enum class Day{
+  SUNDAY,
+  MONDAY,
+  TUESDAY,
+  WEDNESDAY,
+  THURSDAY,
+  FRIDAY,
+  SATURDAY
+}
+```
+* Sealed class restricted for type 
+```kotlin
+sealed class Tile
+class Red(val type:String, val points:Int): Tile()
+class Blue (val points: Int):Tile()
+```
+
+
