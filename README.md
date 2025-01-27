@@ -417,6 +417,7 @@ class MyClass{
 ```
   - now in java we can use this companion object method as static  
 # Data Classes
+ - when we defining the data classes it should carry atleast one primary constructor
  * `equals()` , `toString()` , `hashCode()` of Any Class
     - `equals()` = in data classes if data is same then equals() return true
     - `toString()` = in data class when we print object of class without overriding toString() in class then properties will print
