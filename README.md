@@ -390,4 +390,29 @@ override fun toString(): String {
  * Object Expression
    - Anonymous Objects using object keyword.
    - Replacement of java's Anonymous Inner Class.
-   - 
+# Companion 
+  * companion keyword
+```kotlin
+class MyClass{
+    companion object MyObject {
+        fun f(){
+            println("Hello I am F from Object")
+        }
+    }
+}
+```
+
+  * Need of Companion Object
+    - now we can call method of object as method of class
+    - only one companion allowed in class 
+    - `MyClass.MyObject.f() = MyClass.f()`
+  * @JvmStatic
+```kotlin
+ companion object MyObject {
+ @JvmStatic
+ fun f(){
+            println("Hello I am F from Object")
+        }
+ }
+```
+  - now in java we can use this companion object method as static  
