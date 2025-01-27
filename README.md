@@ -453,5 +453,20 @@ sealed class Tile
 class Red(val type:String, val points:Int): Tile()
 class Blue (val points: Int):Tile()
 ```
+# Null Safety 
+* Null Safety - Nullable & Non Nullable Types
+* Safe call operator (?.) with let
+* Not Null Asserted & Elvis Operator
+   - we use ? in after type `var gender : String?` so variable can accept null value
+   - if we want to use nullable variable or apply method on it we should use safe call operator (?.) `gender?.uppercase()`
+   - when we want error if null value gives by user , we use Not Null Assert operator = `!!`
+```kotlin
+    var selectedValue = gender2 ?: "NA"
+```
+   - if we want some default value if null is given by user than we use Elvis operator = `?.`
+```kotlin
+    val value = gender2!!.uppercase()
+```
+
 
 
