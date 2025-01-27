@@ -9,7 +9,7 @@ fun main() {
 
     // one more thing we can do - we want everyone to call this create method if they want Pizza
     // for that we will mark the constructor as private
-    var pizza3 = Pizza() // Now everyone needs to call create method
+//    var pizza3 = Pizza() // Now everyone needs to call create method
     //    i.e. everyone has to call factory method
 }
 

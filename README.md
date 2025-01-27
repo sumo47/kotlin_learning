@@ -416,3 +416,20 @@ class MyClass{
  }
 ```
   - now in java we can use this companion object method as static  
+# Data Classes
+ * `equals()` , `toString()` , `hashCode()` of Any Class
+    - `equals()` = in data classes if data is same then equals() return true
+    - `toString()` = in data class when we print object of class without overriding toString() in class then properties will print
+    - `hashCode()` = it is function that uniquely identify object 
+ * Copy funciton  - we can copy a object to another variable 
+```kotlin
+var p3 = p1.copy()
+p3 = p1.copy(id = 5)
+```
+
+ * `componentN()` - 
+   - destructure object - 
+```kotlin
+val (id, name) = p1
+val id = p1.component1()
+```
