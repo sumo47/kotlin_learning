@@ -472,3 +472,11 @@ class Blue (val points: Int):Tile()
 * Try catch Finally
 * Throw Exceptions
 
+# List & Map
+* List & Mutable List
+   - Mutable List( Can be changed i.e. elements can be added/removed/replaced)
+   - Immutable List(Can't be changed)
+   - 
+* Map & Mutable Map
+  - key value pair
+  - Mutable and Immutable
