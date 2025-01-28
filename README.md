@@ -516,3 +516,23 @@ Hello Sumit
 * Inline function 
 
 # Scoped Functions - Utility Function (apply , let , with , run)
+
+# Introduction to Generics
+ * it is type of class where we defice `type` and return type while creating object
+ * general class that is not type dependent , we pass type here , in future any type come , it behaves same
+ * list and map is generic class 
+# vararg
+ * we can pass N numbers of value , vararg will wrap all values in array
+ * ex - 
+```kotlin
+fun add(vararg values:Int){
+  var sum = 0
+  for(i in values){
+    sum += i
+  }
+  println(sum)
+}
+fun main(){
+  add(1,2,3,4,) // now we can pass N numbers of argument
+}
+```
