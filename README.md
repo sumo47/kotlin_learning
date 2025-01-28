@@ -484,3 +484,14 @@ class Blue (val points: Int):Tile()
 # higher Order Functions & Lambdas
  * Function that accepts functions as an argument or return funcitons or both
  * Lambdas or Lambda Expression
+   - Different variation of Lambdas
+   - ex - normal function 
+```kotlin
+// this is normal function
+fun sum(a:Int, b:Int):Int
+{
+  return a+b
+}
+// this is lambda expression
+val sum = {a:Int , b:Int -> a+b}
+```
