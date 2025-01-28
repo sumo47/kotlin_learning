@@ -537,4 +537,12 @@ fun main(){
 }
 ```
 
-
+# Nested Classes $ Inner Class
+* we can create class inside class 
+* we can call inner class directly 
+* we can not access properties of outer class into inner class 
+* to access properties of outer class we have to use `inner` keyword in inner class , 
+    - now we have to create object of outer class than we can call inner class
+* ex - without `inner` keyword
+```kotlin
+class 
