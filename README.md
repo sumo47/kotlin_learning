@@ -495,3 +495,6 @@ fun sum(a:Int, b:Int):Int
 // this is lambda expression
 val sum = {a:Int , b:Int -> a+b}
 ```
+
+# Collection Functions - .forEach(), .map(), .filter()
+* User of Lambdas
