@@ -514,3 +514,5 @@ Hello Sumit
 ------------------
 ```
 * Inline function 
+
+# Scoped Functions - Utility Function (apply , let , with , run)
