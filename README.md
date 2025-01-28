@@ -498,3 +498,19 @@ val sum = {a:Int , b:Int -> a+b}
 
 # Collection Functions - .forEach(), .map(), .filter()
 * User of Lambdas
+# Extension Function & Inline Function 
+ - we can add method in class 
+```kotlin
+fun main(){
+  println("Hello Sumit".formattedString())
+}
+
+fun String.formattedString() : String{
+    return "------------------\n$this\n------------------"
+}
+//output 
+------------------
+Hello Sumit
+------------------
+```
+* Inline function 
