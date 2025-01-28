@@ -480,3 +480,7 @@ class Blue (val points: Int):Tile()
 * Map & Mutable Map
   - key value pair
   - Mutable and Immutable
+  
+# higher Order Functions & Lambdas
+ * Function that accepts functions as an argument or return funcitons or both
+ * Lambdas or Lambda Expression
