@@ -6,6 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -13,6 +16,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
@@ -24,6 +28,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.layout.ContentScale
@@ -42,49 +47,105 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-           Column(Modifier.padding(vertical = 50.dp)) {
-               ListViewItem(R.drawable.user, "Sumit kumar", "Web Developer")
-               ListViewItem(R.drawable.user, "Abhishek kumar", "Software Developer")
-               ListViewItem(R.drawable.user, "Nitish Sarkar", "Cloud Developer")
-               ListViewItem(R.drawable.user, "Aman Rawat", "App Developer")
-           }
+            circularImage(
+                R.drawable.ironman,
+                "Logo"
+
+            )
         }
     }
 }
 
-// profile card (parameterized composable)
-
+// parameterized modifier
 @Composable
-private fun ListViewItem(imageId:Int , name:String , occupation: String) {
-    Row(Modifier.padding(8.dp)) {
+fun circularImage(ImageId: Int, contentDescription: String) {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        modifier = Modifier.size(width = 200.dp, height = 200.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+
         Image(
-            painter = painterResource(id = imageId),
-            contentDescription = "userProfile",
-            Modifier.size(40.dp)
+            modifier = Modifier
+                .padding(8.dp)
+                .clip(CircleShape)
+                .border(4.dp, Color.Green, CircleShape),
+            painter = painterResource(id = ImageId),
+            contentDescription = contentDescription
         )
-        Column(verticalArrangement = Arrangement.Center) {
-            Text(text = name, fontWeight = FontWeight.Bold)
-            Text(text = occupation, fontWeight = FontWeight.Thin, fontSize = 12.sp)
-        }
     }
 }
 
-// create Profile card ( custome composable)
-@Preview(showBackground = true, widthDp = 300, heightDp = 500)
-@Composable
-private fun previewFunction() {
-    Row(Modifier.padding(8.dp)) {
-        Image(
-            painter = painterResource(id = R.drawable.user),
-            contentDescription = "userProfile",
-            Modifier.size(40.dp),
-        )
-        Column(verticalArrangement = Arrangement.Center) {
-            Text(text = "Sumit kumar", fontWeight = FontWeight.Bold)
-            Text(text = "Software Developer", fontWeight = FontWeight.Thin, fontSize = 12.sp)
-        }
-    }
-}
+
+// modifier
+//@Preview(widthDp = 300, heightDp = 500, showBackground = true)
+//@Composable
+//private fun previewFunction(){
+//    Text(
+//        text = "Hello",
+//        color = Color.White,
+//        modifier = Modifier.background(Color.Blue) // modifier chaining , works like pipeline
+//            // border has not been applied on whole Text box
+//            // blue -> size -> padding -> border -> circular -> yellow
+//            .size(200.dp)
+//            .padding(36.dp)
+//            .border(4.dp, Color.Red)
+//            .clip(CircleShape)
+//            .background(Color.Yellow)
+//            .clickable {  } // clickable has been applied on yellow area
+//
+//    )
+//}
+
+
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        enableEdgeToEdge()
+//        setContent {
+//           Column(Modifier.padding(vertical = 50.dp)) {
+//               ListViewItem(R.drawable.user, "Sumit kumar", "Web Developer")
+//               ListViewItem(R.drawable.user, "Abhishek kumar", "Software Developer")
+//               ListViewItem(R.drawable.user, "Nitish Sarkar", "Cloud Developer")
+//               ListViewItem(R.drawable.user, "Aman Rawat", "App Developer")
+//           }
+//        }
+//    }
+//}
+//
+//// profile card (parameterized composable)
+//
+//@Composable
+//private fun ListViewItem(imageId:Int , name:String , occupation: String) {
+//    Row(Modifier.padding(8.dp)) {
+//        Image(
+//            painter = painterResource(id = imageId),
+//            contentDescription = "userProfile",
+//            Modifier.size(40.dp)
+//        )
+//        Column(verticalArrangement = Arrangement.Center) {
+//            Text(text = name, fontWeight = FontWeight.Bold)
+//            Text(text = occupation, fontWeight = FontWeight.Thin, fontSize = 12.sp)
+//        }
+//    }
+//}
+//
+//// create Profile card ( custome composable)
+//@Preview(showBackground = true, widthDp = 300, heightDp = 500)
+//@Composable
+//private fun previewFunction() {
+//    Row(Modifier.padding(8.dp)) {
+//        Image(
+//            painter = painterResource(id = R.drawable.user),
+//            contentDescription = "userProfile",
+//            Modifier.size(40.dp),
+//        )
+//        Column(verticalArrangement = Arrangement.Center) {
+//            Text(text = "Sumit kumar", fontWeight = FontWeight.Bold)
+//            Text(text = "Software Developer", fontWeight = FontWeight.Thin, fontSize = 12.sp)
+//        }
+//    }
+//}
 
 //@Preview(showBackground = true, widthDp = 300, heightDp = 500)
 //@Composable

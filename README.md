@@ -40,3 +40,8 @@ fun sayHello (name:String = "Jatin"){
 
 # Column - Vertically Arrange
 # Row - Horizontally Arrange
+# Modifier - 
+ * To modify size, display , appearance and behaviour of the Composable
+ * size, Background Colour, Paddings, Click Handlers
+ * Composition over Inheritance
+ * Can be chained and sequence matters here.
