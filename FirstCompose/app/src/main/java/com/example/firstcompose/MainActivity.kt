@@ -6,8 +6,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Scaffold
@@ -17,6 +22,7 @@ import androidx.compose.material3.contentColorFor
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
@@ -27,6 +33,7 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.firstcompose.ui.theme.FirstComposeTheme
 
@@ -35,11 +42,90 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-//            Text(text = "Hello sumit thsis is myuf sdfnlkfndkfdggng  ng fgndg l");
-            TextInput2()
+           Column(Modifier.padding(vertical = 50.dp)) {
+               ListViewItem(R.drawable.user, "Sumit kumar", "Web Developer")
+               ListViewItem(R.drawable.user, "Abhishek kumar", "Software Developer")
+               ListViewItem(R.drawable.user, "Nitish Sarkar", "Cloud Developer")
+               ListViewItem(R.drawable.user, "Aman Rawat", "App Developer")
+           }
         }
     }
 }
+
+// profile card (parameterized composable)
+
+@Composable
+private fun ListViewItem(imageId:Int , name:String , occupation: String) {
+    Row(Modifier.padding(8.dp)) {
+        Image(
+            painter = painterResource(id = imageId),
+            contentDescription = "userProfile",
+            Modifier.size(40.dp)
+        )
+        Column(verticalArrangement = Arrangement.Center) {
+            Text(text = name, fontWeight = FontWeight.Bold)
+            Text(text = occupation, fontWeight = FontWeight.Thin, fontSize = 12.sp)
+        }
+    }
+}
+
+// create Profile card ( custome composable)
+@Preview(showBackground = true, widthDp = 300, heightDp = 500)
+@Composable
+private fun previewFunction() {
+    Row(Modifier.padding(8.dp)) {
+        Image(
+            painter = painterResource(id = R.drawable.user),
+            contentDescription = "userProfile",
+            Modifier.size(40.dp),
+        )
+        Column(verticalArrangement = Arrangement.Center) {
+            Text(text = "Sumit kumar", fontWeight = FontWeight.Bold)
+            Text(text = "Software Developer", fontWeight = FontWeight.Thin, fontSize = 12.sp)
+        }
+    }
+}
+
+//@Preview(showBackground = true, widthDp = 300, heightDp = 500)
+//@Composable
+//private fun previewFunction() {
+//   Box(// content in z axis
+//       contentAlignment = Alignment.BottomEnd
+//   ) {
+//       Image(painter = painterResource(id = R.drawable.heart), contentDescription = "heart")
+//       Image(painter = painterResource(id = R.drawable.arrow), contentDescription = "arrow" )
+//   }
+//}
+
+//@Preview(showBackground = true, widthDp = 300, heightDp = 500)
+//@Composable
+//private fun previewFunction() {
+//    Row( // horizontally Arrange
+//        horizontalArrangement = Arrangement.Center,
+//        verticalAlignment = Alignment.CenterVertically
+//    )
+//    {
+//        Text(text = "A", fontSize = 24.sp)
+//        Text(text = "A", fontSize = 24.sp)
+//    }
+//}
+
+
+// Column
+//@Preview(showBackground = true, widthDp = 300, heightDp = 500)
+//@Composable
+//fun previewFunction() {
+//
+//    Column(
+//        verticalArrangement = Arrangement.SpaceEvenly,
+//        horizontalAlignment = Alignment.CenterHorizontally
+//    )
+//    { // vertically Arrange
+//
+//        Text(text = "A", fontSize = 24.sp)
+//        Text(text = "B", fontSize = 24.sp)
+//    }
+//}
 
 
 //@Composable
@@ -111,31 +197,31 @@ class MainActivity : ComponentActivity() {
 //}
 
 //@Preview
-@Composable
-fun TextInput() {
-    TextField(
-
-        value = "Hello sumit",
-        onValueChange = {
-            Log.d("myYippee", it) // to logcat changes
-        },
-        label = { Text(text = "Enter Message") }
-    )
-}// here value is static we can not change value in ui
+//@Composable
+//fun TextInput() {
+//    TextField(
+//
+//        value = "Hello sumit",
+//        onValueChange = {
+//            Log.d("myYippee", it) // to logcat changes
+//        },
+//        label = { Text(text = "Enter Message") }
+//    )
+//}// here value is static we can not change value in ui
 // to do it let's write another function
 
-@Composable
-fun TextInput2() {
-    val state = remember { mutableStateOf("") } // remember function remember previous state value
-    TextField(
-        value = state.value,
-        onValueChange = {
-            state.value = it
-            Log.d("sumitg" , it)
-        },
-        label = { Text(text = "Enter Message") },
-    )
-}
+//@Composable
+//fun TextInput2() {
+//    val state = remember { mutableStateOf("") } // remember function remember previous state value
+//    TextField(
+//        value = state.value,
+//        onValueChange = {
+//            state.value = it
+//            Log.d("sumitg" , it)
+//        },
+//        label = { Text(text = "Enter Message") },
+//    )
+//}
 
 
 

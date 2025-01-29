@@ -37,3 +37,6 @@ fun sayHello (name:String = "Jatin"){
    - // showSystemUi = show preview in system ui like 
    - composable function with no default parameter, does not support preview
    - 
+
+# Column - Vertically Arrange
+# Row - Horizontally Arrange
