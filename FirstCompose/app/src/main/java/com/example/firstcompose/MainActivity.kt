@@ -42,39 +42,50 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.firstcompose.ui.theme.FirstComposeTheme
 
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            circularImage(
-                R.drawable.ironman,
-                "Logo"
 
-            )
         }
     }
 }
 
-// parameterized modifier
-@Composable
-fun circularImage(ImageId: Int, contentDescription: String) {
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.size(width = 200.dp, height = 200.dp),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        enableEdgeToEdge()
+//        setContent {
+//            circularImage(
+//                R.drawable.ironman,
+//                "Logo"
+//
+//            )
+//        }
+//    }
+//}
 
-        Image(
-            modifier = Modifier
-                .padding(8.dp)
-                .clip(CircleShape)
-                .border(4.dp, Color.Green, CircleShape),
-            painter = painterResource(id = ImageId),
-            contentDescription = contentDescription
-        )
-    }
-}
+// parameterized modifier
+//@Composable
+//fun circularImage(ImageId: Int, contentDescription: String) {
+//    Row(
+//        horizontalArrangement = Arrangement.Center,
+//        modifier = Modifier.size(width = 200.dp, height = 200.dp),
+//        verticalAlignment = Alignment.CenterVertically
+//    ) {
+//
+//        Image(
+//            modifier = Modifier
+//                .padding(8.dp)
+//                .clip(CircleShape)
+//                .border(4.dp, Color.Green, CircleShape),
+//            painter = painterResource(id = ImageId),
+//            contentDescription = contentDescription
+//        )
+//    }
+//}
 
 
 // modifier
