@@ -56,3 +56,11 @@ fun sayHello (name:String = "Jatin"){
    - Recomposition skips as many composable and lambdas as possible.
    - Recomposition is optimistic and may be canceled - if any state changes during the function call than function call will terminated and call again
    - A composable function might be run quite frequently , as often as every frame of an animation
+# Stete concept & Hoisting & Unidirectional Flow
+ * Mutable State concept - is use to change value of state
+ * State Hoisting - we can create state on top of scope so inner 2 scope can access the state
+ * Unidirectional Data Flow - 
+    - state direction is up to down 
+    - event direction is down to up
+ * remember - is use to remember state value when composable run again  , rememberSaveable - is use to remember state value when composable create again
+
