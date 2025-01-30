@@ -5,32 +5,72 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import screens.QuoteListScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+//        enableEdgeToEdge()
+        CoroutineScope(Dispatchers.IO).launch {
+            delay(10000)
+            DataManager.loadAssetsFromFile(applicationContext)
+        }
         setContent {
-            var count = rememberSaveable() { mutableStateOf(0) }
-//           Recomposable()
-           Column (
-               verticalArrangement = Arrangement.Center,
-               horizontalAlignment = Alignment.CenterHorizontally,
-               modifier = Modifier.fillMaxSize(1f)
-           ){
-               Notification(count.value) { count.value++ }
-               MessageBar(count.value)
-           }
+            App()
         }
     }
 }
+
+@Composable
+fun App() {
+    if(DataManager.isDataLoaded.value){
+        QuoteListScreen(data = DataManager.data) {
+
+        }
+    }else{
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.fillMaxSize(1f)
+        ){
+            Text(text = "Loading...",
+                style = MaterialTheme.typography.headlineMedium)
+        }
+    }
+}
+
+
+//class MainActivity : ComponentActivity() {
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        enableEdgeToEdge()
+//        setContent {
+//            var count = rememberSaveable() { mutableStateOf(0) }
+////           Recomposable()
+//           Column (
+//               verticalArrangement = Arrangement.Center,
+//               horizontalAlignment = Alignment.CenterHorizontally,
+//               modifier = Modifier.fillMaxSize(1f)
+//           ){
+//               Notification(count.value) { count.value++ }
+//               MessageBar(count.value)
+//           }
+//        }
+//    }
+//}
 
 //class MainActivity : ComponentActivity() {
 //    override fun onCreate(savedInstanceState: Bundle?) {

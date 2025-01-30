@@ -3,6 +3,7 @@ package screens
 import android.graphics.drawable.Icon
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,19 +35,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.firstcompose.R
+import com.example.firstcompose.models.Quote
 
 @Composable
-private fun QuoteListItem() {
+fun QuoteListItem(quote: Quote, onClick:()->Unit) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
-        modifier = Modifier.padding(8.dp)
+        modifier = Modifier
+            .padding(8.dp)
+            .clickable { onClick() }
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Image(
                 imageVector = Icons.Filled.FormatQuote,
                 contentDescription = "Quote",
                 colorFilter = ColorFilter.tint(Color.White),
+                alignment = Alignment.TopStart,
                 modifier = Modifier
+
                     .background(Color.Black)
                     .size(44.dp)
                     .rotate(180F)
@@ -54,7 +60,7 @@ private fun QuoteListItem() {
             Spacer(modifier = Modifier.size(8.dp))
             Column {
                 Text(
-                    text = "Time is the valuable things a man can spend.",
+                    text = quote.quote,
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(0.dp, 0.dp, 0.dp, 8.dp)
                 )
@@ -65,63 +71,12 @@ private fun QuoteListItem() {
                         .fillMaxSize(.4f)
                 )
                 Text(
-                    text = "Theophrastus",
+                    text = quote.author,
                     fontWeight = FontWeight.Thin,
                     style = MaterialTheme.typography.titleMedium,
                     modifier = Modifier.padding(top = 4.dp)
                 )
 
-            }
-        }
-    }
-}
-
-@Preview
-@Composable
-fun QuoteDetail() {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .fillMaxSize(1f)
-            .background(
-                Brush.sweepGradient(
-                    colors = listOf(
-                        Color(0xFFffffff),
-                        Color(0xFFE3E3E3)
-                    )
-                )
-            )
-    ) {
-        Card(
-            elevation = CardDefaults.cardElevation(4.dp),
-            colors = CardDefaults.cardColors(Color.White),
-            modifier = Modifier.padding(32.dp)
-                .background(Color.White)
-
-
-        ) {
-            Column (
-                modifier = Modifier.padding(16.dp,24.dp)
-
-            ){
-                Image(
-                    imageVector = Icons.Filled.FormatQuote,
-                    contentDescription = "Quote",
-                    modifier = Modifier
-                        .rotate(180f)
-                        .size(80.dp)
-                )
-                Text(
-                    text = "Time is the valuable things a man can spend.",
-                    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
-                    style = MaterialTheme.typography.headlineSmall
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = "Theophrastus",
-                    fontFamily = FontFamily(Font(R.font.montserrat_regular)),
-                    style = MaterialTheme.typography.labelLarge
-                )
             }
         }
     }
