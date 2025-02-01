@@ -67,4 +67,12 @@ fun sayHello (name:String = "Jatin"){
  * it is use to trigger method or function when we want , 
  * syntax -     LaunchedEffect(key1 = dependency) { function i want to trigger }
  * useEffet like 
-
+# Remember Coroutine Scope
+ * Remember Coroutine Scope vs launched
+    - In Jetpack compose, we have the option of using rememberCoroutineScope() as well as using the LaunchedEffect composable in order to use coroutines / run suspend functions
+    - launchedEffect - when composable is first launched/relaunched (or when the key parameter has changed)
+    - rememberCoroutineScope - is specific to store the Coroutine scope allowing the code to launch some suspend function
+ * Examples
+ * Side Effects - any changes that will happen out of composable scope.
+   - our composable should be side effect free
+ * LaunchedEffect - it is composable to execute side effect
