@@ -19,6 +19,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import screens.QuoteDetail
 import screens.QuoteListScreen
 
 class MainActivity : ComponentActivity() {
@@ -26,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 //        enableEdgeToEdge()
         CoroutineScope(Dispatchers.IO).launch {
-            delay(10000)
+            delay(5000)
             DataManager.loadAssetsFromFile(applicationContext)
         }
         setContent {
@@ -38,9 +39,13 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun App() {
     if(DataManager.isDataLoaded.value){
-        QuoteListScreen(data = DataManager.data) {
-
-        }
+       if(DataManager.currentPage.value == Pages.LISTING){
+           QuoteListScreen(data = DataManager.data) {
+                DataManager.switchPages(it)
+           }
+       }else{
+           DataManager.currentQuote?.let { QuoteDetail(quote = it) }
+       }
     }else{
         Box(
             contentAlignment = Alignment.Center,
@@ -50,6 +55,10 @@ fun App() {
                 style = MaterialTheme.typography.headlineMedium)
         }
     }
+}
+enum class Pages{
+    LISTING,
+    DETAIL
 }
 
 

@@ -16,10 +16,10 @@ import com.example.firstcompose.R
 import com.example.firstcompose.models.Quote
 
 @Composable
-fun QuoteListScreen(data:Array<Quote>, onClick:()->Unit){
+fun QuoteListScreen(data: Array<Quote>, onClick: (quote: Quote) -> Unit) {
     Column {
         Text(
-            text="Quote App",
+            text = "Quote App",
             textAlign = TextAlign.Center,
             modifier = Modifier
                 .padding(8.dp, 24.dp)
@@ -28,8 +28,6 @@ fun QuoteListScreen(data:Array<Quote>, onClick:()->Unit){
             fontFamily = FontFamily(Font(R.font.montserrat_regular))
 
         )
-        QuoteList(data = data) {
-            onClick
-        }
+        QuoteList(data = data, onClick)
     }
 }

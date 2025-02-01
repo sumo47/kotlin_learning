@@ -38,12 +38,15 @@ import com.example.firstcompose.R
 import com.example.firstcompose.models.Quote
 
 @Composable
-fun QuoteListItem(quote: Quote, onClick:()->Unit) {
+fun QuoteListItem(quote: Quote, onClick: (quote: Quote) -> Unit) {
     Card(
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp),
         modifier = Modifier
             .padding(8.dp)
-            .clickable { onClick() }
+            .background(Color.White)
+            .clickable { onClick(quote) }
+
+
     ) {
         Row(modifier = Modifier.padding(16.dp)) {
             Image(
@@ -52,7 +55,6 @@ fun QuoteListItem(quote: Quote, onClick:()->Unit) {
                 colorFilter = ColorFilter.tint(Color.White),
                 alignment = Alignment.TopStart,
                 modifier = Modifier
-
                     .background(Color.Black)
                     .size(44.dp)
                     .rotate(180F)
