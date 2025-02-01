@@ -63,4 +63,8 @@ fun sayHello (name:String = "Jatin"){
     - state direction is up to down 
     - event direction is down to up
  * remember - is use to remember state value when composable run again  , rememberSaveable - is use to remember state value when composable create again
+# LaunchedEffect - 
+ * it is use to trigger method or function when we want , 
+ * syntax -     LaunchedEffect(key1 = dependency) { function i want to trigger }
+ * useEffet like 
 
