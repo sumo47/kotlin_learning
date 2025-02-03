@@ -33,7 +33,10 @@ class MainActivity : ComponentActivity() {
 //            RememberUpdatedState2()
 //            DisposableFunction()
 //            MediaCompose()
-            KeyboardDiscomposable()
+//            KeyboardDiscomposable()
+//            Counters()
+//            Loader()
+            Derived()
         }
     }
 }
