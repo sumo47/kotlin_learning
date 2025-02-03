@@ -76,3 +76,7 @@ fun sayHello (name:String = "Jatin"){
  * Side Effects - any changes that will happen out of composable scope.
    - our composable should be side effect free
  * LaunchedEffect - it is composable to execute side effect
+# RememberUpdatedState - SideEffect Handler
+  * it is basically stores updated value of state
+  * it returns state<T> object
+  * to use it - state.value

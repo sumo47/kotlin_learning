@@ -28,7 +28,9 @@ class MainActivity : ComponentActivity() {
 //        enableEdgeToEdge()
         setContent {
 //            App()
-            MainActivity2()
+//            MainActivity2()
+//            RememberUpdatedState()
+            RememberUpdatedState2()
         }
     }
 }
