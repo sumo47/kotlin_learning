@@ -30,7 +30,10 @@ class MainActivity : ComponentActivity() {
 //            App()
 //            MainActivity2()
 //            RememberUpdatedState()
-            RememberUpdatedState2()
+//            RememberUpdatedState2()
+//            DisposableFunction()
+//            MediaCompose()
+            KeyboardDiscomposable()
         }
     }
 }
