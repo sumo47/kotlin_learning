@@ -80,3 +80,16 @@ fun sayHello (name:String = "Jatin"){
   * it is basically stores updated value of state
   * it returns state<T> object
   * to use it - state.value
+# Tweetsy Compose - App
+  * Demo App
+  * Tech - MVVM, Navigation Component, HILT, Retrofit etc.
+  * API - for api we have used Jsonbin website
+    - created a collection name - `tweetsy` in `https://jsonbin.io/` website
+    - created a bin inside collection tweetsy , and paste json 
+    - change the privacy of bin (private to public ) using url - `https://api.jsonbin.io/v3/b/67a2819de41b4d34e484253c/meta/privacy`
+      - in the Header
+        - `X-Bin-Private` : `false`
+        - `X-Master-Key`  : (api-key)
+    - now we can access json using url - `https://api.jsonbin.io/v3/b/67a2819de41b4d34e484253c`
+    - if we don't want meta - `https://api.jsonbin.io/v3/b/67a2819de41b4d34e484253c?meta=false`
+    - filter by category , add header - `X-JSON-Path` : `tweets[?(@.category=="Motivation")]`
