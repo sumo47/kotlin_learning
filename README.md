@@ -93,3 +93,13 @@ fun sayHello (name:String = "Jatin"){
     - now we can access json using url - `https://api.jsonbin.io/v3/b/67a2819de41b4d34e484253c`
     - if we don't want meta - `https://api.jsonbin.io/v3/b/67a2819de41b4d34e484253c?meta=false`
     - filter by category , add header - `X-JSON-Path` : `tweets[?(@.category=="Motivation")]`
+# Hilt - 
+  * Hilt is a dependency injection library for Android
+  * Standard way of implementing DI in Android
+  * Built on top of Dagger 2
+  * Hilt generates Dagger code for you
+# Navigation In compose
+  * NavHost - the screen will render
+  * NavGraph - graph view , which screen is connected to different
+  * NavController - how two screen manage
+
