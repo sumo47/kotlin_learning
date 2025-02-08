@@ -38,7 +38,7 @@ Note - We will Targeting JVM to learn Kotlin Concept
      }
   ```
 # Variable
-  - var ca be reassigned.
+  - var can be reassigned.
   - val can't be reassigned.
   
 # Data Types
@@ -209,7 +209,7 @@ var arr = arrayOf("One", "Two", "Three")
  * Class has 2 things - Properties & Methods
  * Initialize object & provide default values to Properties
  * `init` - create CONSTRUCTOR
- *` constructor` - create default constructor overloading
+ * `constructor` - create default constructor overloading
  * Default Constructor - if we define a class and does not define constructor than kotlin add default paramaeter-less constructor . we call call it like 
 ```kotlin
 val ob = calculator()
