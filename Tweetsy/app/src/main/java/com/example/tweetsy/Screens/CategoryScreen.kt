@@ -1,6 +1,7 @@
 package com.example.tweetsy.Screens
 
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -24,14 +25,16 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.tweetsy.R
 import com.example.tweetsy.viewModel.CategoryViewModel
 
 
 @Composable
-fun CategoryScreen() {
-    val categoryViewModel: CategoryViewModel = viewModel()
+fun CategoryScreen(onClick: (category: String) -> Unit) {
+    val categoryViewModel: CategoryViewModel =
+        hiltViewModel() // can not use normal viewModel while using hilt
     val categories: State<List<String>> = categoryViewModel.categories.collectAsState()
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
@@ -39,23 +42,24 @@ fun CategoryScreen() {
         verticalArrangement = Arrangement.SpaceAround,
         modifier = Modifier.padding(top = 40.dp)
     ) {
-        items(categories.value.distinct()){
-            CategoryItem(category = it)
+        items(categories.value.distinct()) {
+            CategoryItem(category = it, onClick)
         }
     }
-
 }
 
 @Composable
-fun CategoryItem(category: String) {
+fun CategoryItem(category: String, onClick: (category: String) -> Unit) {
     Box(
         modifier = Modifier
             .padding(4.dp)
             .size(160.dp)
+            .clickable { onClick(category) }
             .clip(RoundedCornerShape(8.dp))
             .paint(
                 painter = painterResource(id = R.drawable.bg),
-                contentScale = ContentScale.Crop)
+                contentScale = ContentScale.Crop
+            )
             .border(1.dp, Color.Gray),
         contentAlignment = Alignment.BottomCenter
     ) {

@@ -41,8 +41,34 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             TweetsyTheme {
-                DetailScreen()
+                App()
             }
         }
+    }
+}
+
+@Composable
+fun App() {
+    val navController = rememberNavController()
+    NavHost(navController = navController, startDestination = "category") {
+
+        composable(route = "category") {
+            CategoryScreen() { navController.navigate("detail/${it}") }
+//          CategoryScreen(onClick = {navController.navigate("detail/$it")}) // anonymous function
+        }
+
+        composable(
+            route = "detail/{category}",
+            arguments = listOf(navArgument("category") { type = NavType.StringType })
+            // arguments - is property that we use in composable function
+            // kya arguments list accept karta h ?
+            // navArgument - is function call that creates NavArgument Object
+            // category - is name of an Argument , we will access argument using this name
+            // {...} - is lambda function where we configure NavArgument , here we will give detail of argument
+        )
+        {
+            DetailScreen()
+        }
+
     }
 }

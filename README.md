@@ -77,6 +77,7 @@ fun sayHello (name:String = "Jatin"){
   * Built on top of Dagger 2
   * Hilt generates Dagger code for you
 # Navigation In compose
-  * NavHost - the screen will render
-  * NavGraph - graph view , which screen is connected to different
-  * NavController - how two screen manage
+  * NavHost - the screen will render , 
+  * NavGraph - graph view , which screen is connected to different, from one place where we can go , nav graph says that
+  * NavController - how two screen manage, interaction between NavHost and NavGraph , manage 
+  * Nav Argument - the detail will pass from one navhost to another
