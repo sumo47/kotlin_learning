@@ -81,3 +81,6 @@ fun sayHello (name:String = "Jatin"){
   * NavGraph - graph view , which screen is connected to different, from one place where we can go , nav graph says that
   * NavController - how two screen manage, interaction between NavHost and NavGraph , manage 
   * Nav Argument - the detail will pass from one navhost to another
+# Navigation apply 
+  * when we go from one scree to another , than the arguments will stored in savedStateHandle
+  
