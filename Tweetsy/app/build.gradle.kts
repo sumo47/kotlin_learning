@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    alias(libs.plugins.hilt.android)  // Add Hilt Plugin
+    alias(libs.plugins.hilt.android)
     kotlin("kapt")
 }
 
@@ -43,37 +43,45 @@ android {
 }
 
 dependencies {
-    // ViewModel
-    implementation(libs.androidx.lifecycle.viewmodel.ktx)
-    // ViewModel utilities for Compose
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
+    // Android Core & Kotlin Coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.gson)
 
-    // OkHttp (Optional but Recommended)
-    implementation(libs.okhttp)
-    implementation(libs.okhttp.logging)
-
-    // Jetpack Navigation for Compose
-    implementation(libs.navigation.compose)
-
-    implementation(libs.androidx.lifecycle.runtime.ktx)
+    // Jetpack Compose
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    // Navigation for Compose
+    implementation(libs.navigation.compose)
+
+    // Lifecycle & ViewModel
+    implementation(libs.androidx.lifecycle.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
+
+    // Retrofit & Networking
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+    implementation(libs.okhttp)
+    implementation(libs.okhttp.logging)
+
+    // Hilt for Dependency Injection
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
+    implementation(libs.hilt.navigation.compose)
+
+    // Testing Dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    // Debugging Tools
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-    implementation(libs.hilt.navigation.compose)
 }
