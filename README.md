@@ -38,7 +38,7 @@ Note - We will Targeting JVM to learn Kotlin Concept
      }
   ```
 # Variable
-  - var can be reassigned.
+  - var ca be reassigned.
   - val can't be reassigned.
   
 # Data Types
@@ -271,26 +271,278 @@ lateinit var message:String;
 open class Mobile(){
   open val name : String = ""; // properties can be override
   open fun display() = println("Simple Mobile display") // function can now able to override in child class
-=======
-# What is COMPOSE
-* Android native UI Toolkit written in Kotlin.
-* Not part of the framework, it is a jetpack Library
-* Basic Building Block - composable (Kotlin Funciton with @Composable)
-```kotlin
-@Composable
-fun SayCheezy(name:String){
-  Text(text = "Welcome To Dark World $name!")
->>>>>>> Android_Jetpack_Compose
 }
 ```
-# Imperative vs Declarative 
-* Imperative is `How?`
-* Declarative is `What?`
-   - f(data) = UI
- 
-# INHERITANCE TREE
- * All the views inherit from View Class
- * For large codebase, Inheritance becomes complex.
- * Composition over Inheritance
- * RECOMPOSITION 
-   - In Simple words - Whenever your state changes , it will recreate UI
+   - where we want to override we have to use override keyword 
+```kotlin
+class OnePlus : Mobile(){
+    override val name:String = "OnePlus mobile"; // OnePlus mobile 
+    override fun display() = println("OnePlus display") // OnePlus display
+}
+```
+ * Calling Parameterized Contructores
+   - if we inherit any Parameterized class than we have to write all parameterized properties in child class
+   - ex - 
+```kotlin
+open class Mobile(val type:String){}
+
+class OnePlus : Mobile("SmartPhone"){}
+```
+   - we can dynamicaly pass parameter in parent class
+```kotlin
+open class Mobile(val type:String){}
+
+class OnePlus(typeParam:String) : Mobile(typeParam){}
+```
+  - `super` - we can use parent properties in child class using `super` keyword
+```kotlin
+open class Mobile(){ // parent class
+  open fun display() = println("Simple Mobile Display")
+}
+class OnePlus : Mobile(){ // child class
+  override fun display(){
+    super.display() // Simple Mobile Display
+    println("OnePlus Display")
+  }
+}
+```
+ * Getter/Setter Override
+ * Any Type
+   - Yes, in Kotlin, the superclass of all classes is Any. 
+   - If you don't specify a superclass explicitly, your class will implicitly inherit from Any.
+   - Any provides three methods: `equals()`, `hashCode()`, and `toString()`.
+   - Therefore, all Kotlin classes have these methods by default.
+   - override `toString()`
+```kotlin
+override fun toString(): String {
+  return "Name - $name - Size - $size"
+}
+```
+# Polymorphism 
+* what is Polymorphism ?
+   - parent can hold refrence to it's child and call method to it's child classes
+   - parent can call methods of child classes (which are common)
+* Advantages of Polymorphism
+  - Helps to write Maintainable & Extensible Code 
+  - helps in interacting with objects via common interface
+  
+# Polymorphism more
+* More about Polymorphism
+   * Poly means Many & Morph means Form
+   * In computer Science, it is defined as - method name is some but it will behave differently based on the object.
+   * INHERITANCE & POLYMORPHISM
+    - IS-A relationship (Circle is a Shape)
+    - So whereever Shape is required, we can any of subclasses i.e. we can easily pass Circle, Square or Triangle. Because they all inherit from Shape
+    - but we cannot pass Shape Object where Circle is require. Because all shapes are not circle.
+* method Calling
+   - when we call any method , compiler checks firstly in `subclass` and then checks in `Superclass` then checks in `Any` class
+   - Any <--- SuperClass <--- SubClass
+  
+# Abstract Class
+ * Abstract Class
+ * Need of Abstract Class
+ * Abstract methods
+   - Class ( Abstract class ) can't be instantiated
+   - Abstract class can have both abstract and not abstract properties & methods
+   - if a class has abstract method or property then class must be declared as abstract
+  
+# Interface
+* Interface
+* Need of Interface
+* Polymorphic Behavior
+  - Group objects based on what they can do rather than what they are.
+  - To use polymorphism in unrelated set of classes (i.e. classes which do not belong to same inheritance hierarchy)
+  - Common Terminology - Interface is a contract which states that whoever implements that interface has to provide the implementation for the methods.
+  - Interfaces are meant for behaviors. Classes which exihibits  that behavior implements that interface.
+  - Interface can have both abstract and concrete methods.
+  - Interface can implement other interfaces and one class can implement many interface but class can have only one superclass.
+
+# Type Checking & Smart Casting
+
+# Visibility Modifiers
+* Top level declarations
+  * Public - 
+    - Everywhare
+  * Internal
+    - with in a module ( with in project)
+  * Protected
+    - With in file
+  * Private
+    - N/A
+* Class Members
+  * Public - 
+    - Everywhare
+  * Internal
+    - with in a module
+  * Protected
+    - With in class
+  * Private
+    - Subclasses
+  
+# Object 
+ * object keyword
+ * Object Declaration and Expression
+   - Class and it's Single Object is created at once.
+   - No constructors are allowed (init block is allowed)
+   - Singleton Pattern
+     - is use to create single object
+   - You can inherit class/interface.
+ * Object Expression
+   - Anonymous Objects using object keyword.
+   - Replacement of java's Anonymous Inner Class.
+# Companion 
+  * companion keyword
+```kotlin
+class MyClass{
+    companion object MyObject {
+        fun f(){
+            println("Hello I am F from Object")
+        }
+    }
+}
+```
+
+  * Need of Companion Object
+    - now we can call method of object as method of class
+    - only one companion allowed in class 
+    - `MyClass.MyObject.f() = MyClass.f()`
+  * @JvmStatic
+```kotlin
+ companion object MyObject {
+ @JvmStatic
+ fun f(){
+            println("Hello I am F from Object")
+        }
+ }
+```
+  - now in java we can use this companion object method as static  
+# Data Classes
+ - when we defining the data classes it should carry atleast one primary constructor
+ * `equals()` , `toString()` , `hashCode()` of Any Class
+    - `equals()` = in data classes if data is same then equals() return true
+    - `toString()` = in data class when we print object of class without overriding toString() in class then properties will print
+    - `hashCode()` = it is function that uniquely identify object 
+ * Copy funciton  - we can copy a object to another variable 
+```kotlin
+var p3 = p1.copy()
+p3 = p1.copy(id = 5)
+```
+
+ * `componentN()` - 
+   - destructure object - 
+```kotlin
+val (id, name) = p1
+val id = p1.component1()
+```
+# Enum classes , Sealed Classes
+* we can assign set of constant value in variable
+```kotlin
+enum class Day{
+  SUNDAY,
+  MONDAY,
+  TUESDAY,
+  WEDNESDAY,
+  THURSDAY,
+  FRIDAY,
+  SATURDAY
+}
+```
+* Sealed class restricted for type 
+```kotlin
+sealed class Tile
+class Red(val type:String, val points:Int): Tile()
+class Blue (val points: Int):Tile()
+```
+# Null Safety 
+* Null Safety - Nullable & Non Nullable Types
+* Safe call operator (?.) with let
+* Not Null Asserted & Elvis Operator
+   - we use ? in after type `var gender : String?` so variable can accept null value
+   - if we want to use nullable variable or apply method on it we should use safe call operator (?.) `gender?.uppercase()`
+   - when we want error if null value gives by user , we use Not Null Assert operator = `!!`
+```kotlin
+    var selectedValue = gender2 ?: "NA"
+```
+   - if we want some default value if null is given by user than we use Elvis operator = `?.`
+```kotlin
+    val value = gender2!!.uppercase()
+```
+
+# Exception Handling
+* Try catch Finally
+* Throw Exceptions
+
+# List & Map
+* List & Mutable List
+   - Mutable List( Can be changed i.e. elements can be added/removed/replaced)
+   - Immutable List(Can't be changed)
+   - 
+* Map & Mutable Map
+  - key value pair
+  - Mutable and Immutable
+  
+# higher Order Functions & Lambdas
+ * Function that accepts functions as an argument or return funcitons or both
+ * Lambdas or Lambda Expression
+   - Different variation of Lambdas
+   - ex - normal function 
+```kotlin
+// this is normal function
+fun sum(a:Int, b:Int):Int
+{
+  return a+b
+}
+// this is lambda expression
+val sum = {a:Int , b:Int -> a+b}
+```
+
+# Collection Functions - .forEach(), .map(), .filter()
+* User of Lambdas
+# Extension Function & Inline Function 
+ - we can add method in class 
+```kotlin
+fun main(){
+  println("Hello Sumit".formattedString())
+}
+
+fun String.formattedString() : String{
+    return "------------------\n$this\n------------------"
+}
+//output 
+------------------
+Hello Sumit
+------------------
+```
+* Inline function 
+
+# Scoped Functions - Utility Function (apply , let , with , run)
+
+# Introduction to Generics
+ * it is type of class where we defice `type` and return type while creating object
+ * general class that is not type dependent , we pass type here , in future any type come , it behaves same
+ * list and map is generic class 
+# vararg
+ * we can pass N numbers of value , vararg will wrap all values in array
+ * ex - 
+```kotlin
+fun add(vararg values:Int){
+  var sum = 0
+  for(i in values){
+    sum += i
+  }
+  println(sum)
+}
+fun main(){
+  add(1,2,3,4,) // now we can pass N numbers of argument
+}
+```
+
+# Nested Classes $ Inner Class
+* we can create class inside class 
+* we can call inner class directly 
+* we can not access properties of outer class into inner class 
+* to access properties of outer class we have to use `inner` keyword in inner class , 
+    - now we have to create object of outer class than we can call inner class
+* ex - without `inner` keyword
+```kotlin
+class 
