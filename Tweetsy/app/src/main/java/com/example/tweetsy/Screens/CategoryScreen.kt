@@ -34,8 +34,7 @@ import com.example.tweetsy.viewModel.CategoryViewModel
 
 @Composable
 fun CategoryScreen(onClick: (category: String) -> Unit) {
-    val categoryViewModel: CategoryViewModel =
-        hiltViewModel() // can not use normal viewModel while using hilt
+    val categoryViewModel: CategoryViewModel = hiltViewModel() // can not use normal viewModel while using hilt
     val categories: State<List<String>> = categoryViewModel.categories.collectAsState()
 
     if (categories.value.isEmpty()) {
