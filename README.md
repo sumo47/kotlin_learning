@@ -63,3 +63,11 @@
 * Build automation tool - automate some work - compile code , fetch dependency from internet , build app 
 * plugin - tool uses by gradle to build app , like - to understand kotlin they use kotlin plugin 
 * dependency - our project will use some third party library 
+
+# Scaffold - Yeh jetpack compose ki Material Design Library se ek pre-built composable hai.
+Common screen structures ke liye ek layout composable.
+# modifier - Iska use composables ko decorate ya augment karne ke liye hota hai, jisse aap unka size, layout, behavior, aur appearance change kar sakte hain.
+# SetContent - Iska use Activity ya fragment ke UI content ko define karne ke liye hota hai
+# Composables - Compose me UI building blocks.
+
+
