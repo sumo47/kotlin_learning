@@ -58,3 +58,8 @@
    - onStop() - Fully hidden ho jati hai.
    - onDestroy() - Activity destroy ho jati hai.
    - onRestart() - wapas se onCreate() call hota hai
+
+# Gradle
+* Build automation tool - automate some work - compile code , fetch dependency from internet , build app 
+* plugin - tool uses by gradle to build app , like - to understand kotlin they use kotlin plugin 
+* dependency - our project will use some third party library 
