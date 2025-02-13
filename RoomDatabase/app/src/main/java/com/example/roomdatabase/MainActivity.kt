@@ -1,35 +1,24 @@
 package com.example.roomdatabase
 
 import android.os.Bundle
-import android.widget.Space
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.Button
-import androidx.compose.material3.Card
-import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -46,14 +35,14 @@ class MainActivity : ComponentActivity() {
         Room.databaseBuilder(
             applicationContext,
             NoteDatabase::class.java,
-            "note.db"  // Removed `name =` as it's redundant
+            "note.db"
         ).build()
     }
 
     private val viewModel by viewModels<NoteViewModel> {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return NoteViewModel(Repository(db)) as T  // Explicit cast applied correctly
+                return NoteViewModel(Repository(db)) as T
             }
         }
     }
@@ -67,108 +56,121 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    var name by remember {
-                        mutableStateOf("")
-                    }
-                    var body by remember {
-                        mutableStateOf("")
-                    }
-                    var note = Note(
-                        name,
-                        body
-                    )
-                    var noteList by remember {
-                        mutableStateOf(listOf<Note>())
-                    }
-                    viewModel.getNotes().observe(this) {
-                        noteList = it
-                    }
-
-                    Column(
-                        Modifier
-                            .padding(12.dp)
-                            .fillMaxSize(1f),
-                        verticalArrangement = Arrangement.Center,
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        Button(onClick = {
-                            viewModel.upsertNote(note)
-                        }) {
-                            Text(text = "Save")
-                        }
-
-                        Spacer(Modifier.padding(8.dp))
-
-                        TextField(
-                            value = name,
-                            onValueChange = { name = it },
-                            placeholder = { Text(text = "Enter name") })
-
-                        Spacer(Modifier.padding(8.dp))
-
-                        TextField(
-                            value = body,
-                            onValueChange = { body = it },
-                            placeholder = { Text(text = "Enter body") })
-                        Spacer(Modifier.padding(10.dp))
-
-//                        LazyColumn {
-//                            items(noteList) { note ->
-//                                Column {
-//                                    Text(text = "Name: ${note.noteName}")
-//                                    Spacer(Modifier.height(6.dp))
-//                                    Text(text = "Body: ${note.noteBody}")
-//                                    Divider(
-//                                        Modifier
-//                                            .fillMaxWidth()
-//                                            .padding(6.dp)
-//                                    )
-//                                }
-//                            }
-//                        }
-                        LazyColumn(
-                            modifier = Modifier.padding(16.dp)
-                        ) {
-                            items(noteList) { note ->
-                                Card(// appearance and behavior
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(vertical = 8.dp),
-                                    shape = RoundedCornerShape(12.dp),
-                                    elevation = CardDefaults.cardElevation(4.dp),
-                                    colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
-                                ) {
-                                    Column(
-                                        modifier = Modifier
-                                            .padding(16.dp)
-                                    ) {
-                                        Text(
-                                            text = "📌 ${note.noteName}",
-                                            style = MaterialTheme.typography.titleMedium,
-                                            color = MaterialTheme.colorScheme.primary
-                                        )
-
-                                        Spacer(Modifier.height(4.dp))
-
-                                        Text(
-                                            text = note.noteBody,
-                                            style = MaterialTheme.typography.bodyMedium,
-                                            color = MaterialTheme.colorScheme.onSurface
-                                        )
-
-                                        Spacer(Modifier.height(8.dp))
-
-                                        Divider(color = MaterialTheme.colorScheme.secondary, thickness = 1.dp)
-                                    }
-                                }
-                            }
-                        }
-
-
-                    }
-
+                    NotesScreen(viewModel)
                 }
             }
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun NotesScreen(viewModel: NoteViewModel) {
+    var name by remember { mutableStateOf("") }
+    var body by remember { mutableStateOf("") }
+    var noteList by remember { mutableStateOf(listOf<Note>()) }
+
+    viewModel.getNotes().observeForever {
+        noteList = it
+    }
+
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = { Text("📒 My Notes", fontWeight = FontWeight.Bold) },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = Color.White
+                )
+            )
+        },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = {
+                    if (name.isNotEmpty() && body.isNotEmpty()) {
+                        viewModel.upsertNote(Note(name, body))
+                        name = ""
+                        body = ""
+                    }
+                },
+                containerColor = MaterialTheme.colorScheme.primary
+            ) {
+                Icon(Icons.Filled.Add, contentDescription = "Add Note", tint = Color.White)
+            }
+        }
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(paddingValues)
+                .padding(16.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            OutlinedTextField(
+                value = name,
+                onValueChange = { name = it },
+                label = { Text("Title") },
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            OutlinedTextField(
+                value = body,
+                onValueChange = { body = it },
+                label = { Text("Note") },
+                modifier = Modifier.fillMaxWidth(),
+                shape = RoundedCornerShape(12.dp)
+            )
+
+            Spacer(modifier = Modifier.height(16.dp))
+
+            AnimatedVisibility(visible = noteList.isNotEmpty()) {
+                LazyColumn(
+                    modifier = Modifier.fillMaxSize()
+                ) {
+                    items(noteList) { note ->
+                        NoteCard(note)
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun NoteCard(note: Note) {
+    Card(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(vertical = 6.dp),
+        shape = RoundedCornerShape(12.dp),
+        elevation = CardDefaults.cardElevation(4.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface)
+    ) {
+        Column(
+            modifier = Modifier
+                .padding(16.dp)
+        ) {
+            Text(
+                text = "📌 ${note.noteName}",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.primary
+            )
+
+            Spacer(modifier = Modifier.height(4.dp))
+
+            Text(
+                text = note.noteBody,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurface
+            )
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Divider(color = MaterialTheme.colorScheme.secondary, thickness = 1.dp)
         }
     }
 }
