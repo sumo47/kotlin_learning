@@ -163,4 +163,5 @@ fun sayHello (name:String = "Jatin"){
 * `measureTimeMillis` - is use to measure time of execution of code
 * `buffer` - is use to remove bottleneck
 * if we emit in main thread and want to collect another thread , - it will gives error - to overcome it we use `FlowOn`
-* 
+* every consumer will get indepandent flow object data
+* `sharedFlow` - it is hot flow
