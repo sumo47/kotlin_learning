@@ -84,4 +84,14 @@ fun sayHello (name:String = "Jatin"){
 # Navigation apply 
   * when we go from one scree to another , than the arguments will stored in savedStateHandle
   
-# 
+# Room Db
+* Room is part ot Android jetpack, which is helps to create robust , testable , and maintainable apps.(this is suite of library)
+* Advantage - LiveData aur Flow ke saath integration: Room LiveData aur Flow ke saath seamlessly kaam kar sakta hai, jisse data change hone par aapke UI ko update karna aasaan ho jata hai.
+* Key Components
+1. Entity - it represents table of database
+    - use - @Entity annotation
+2. DAO (Data Access Object) - ye ek interface or abstract class hai , jo database se interact karne ke liye method defice krta hai
+    - use - @DAO
+    - Flow - it is stream of flow data , so we can collect data asynchronously
+3. Database - it is main access point of database
+

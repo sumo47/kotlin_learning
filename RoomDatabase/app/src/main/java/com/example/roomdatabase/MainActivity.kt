@@ -7,18 +7,21 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -31,7 +34,7 @@ import com.example.roomdatabase.viewModel.Repository
 
 class MainActivity : ComponentActivity() {
 
-    private val db by lazy {
+    private val db by lazy { // execute once , cache result
         Room.databaseBuilder(
             applicationContext,
             NoteDatabase::class.java,
@@ -131,7 +134,7 @@ fun NotesScreen(viewModel: NoteViewModel) {
                     modifier = Modifier.fillMaxSize()
                 ) {
                     items(noteList) { note ->
-                        NoteCard(note)
+                        NoteCard(note, viewModel)
                     }
                 }
             }
@@ -140,7 +143,7 @@ fun NotesScreen(viewModel: NoteViewModel) {
 }
 
 @Composable
-fun NoteCard(note: Note) {
+fun NoteCard(note: Note , viewModel :NoteViewModel) {
     Card(
         modifier = Modifier
             .fillMaxWidth()
@@ -153,12 +156,22 @@ fun NoteCard(note: Note) {
             modifier = Modifier
                 .padding(16.dp)
         ) {
-            Text(
-                text = "📌 ${note.noteName}",
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                color = MaterialTheme.colorScheme.primary
-            )
+           Row (
+               modifier = Modifier.fillMaxWidth(),
+               horizontalArrangement = Arrangement.SpaceBetween
+           ){
+               Text(
+                   text = "📌 ${note.noteName}",
+                   style = MaterialTheme.typography.titleMedium,
+                   fontWeight = FontWeight.Bold,
+                   color = MaterialTheme.colorScheme.primary
+               )
+               Icon(Icons.Filled.Delete,
+                   contentDescription = "Delete Note",
+                   tint = Color.Red,
+                   modifier = Modifier.clickable { viewModel.deleteNote(note) })
+
+           }
 
             Spacer(modifier = Modifier.height(4.dp))
 
@@ -172,5 +185,23 @@ fun NoteCard(note: Note) {
 
             Divider(color = MaterialTheme.colorScheme.secondary, thickness = 1.dp)
         }
+    }
+}
+
+@Preview
+@Composable
+fun line (){
+    Row (
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.Absolute.SpaceBetween
+    ){
+        Text(
+            text = "📌 this is note",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.primary
+        )
+        Icon(Icons.Filled.Delete, contentDescription = "Delete Note", tint = Color.Red)
+
     }
 }

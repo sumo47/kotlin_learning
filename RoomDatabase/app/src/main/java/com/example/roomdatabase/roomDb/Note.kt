@@ -10,3 +10,10 @@ data class Note(
     @PrimaryKey(autoGenerate = true)
     val noteId: Int = 0,
 )
+@Entity // entry point
+data class User(
+    val noteName: String,
+    val noteBody: String,
+    @PrimaryKey(autoGenerate = true)
+    val noteId: Int = 0,
+)
