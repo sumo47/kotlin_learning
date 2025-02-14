@@ -165,3 +165,8 @@ fun sayHello (name:String = "Jatin"){
 * if we emit in main thread and want to collect another thread , - it will gives error - to overcome it we use `FlowOn`
 * every consumer will get indepandent flow object data
 * `sharedFlow` - it is hot flow
+* `stateFlow` - it is also hot but stores last value4
+* LIVEDATA VS STATEFLOW
+  1. Transformations of Mian thread - sateFlow can execure on worker thread
+  2. Operators - stateFlow have many operators
+  3. LifeCycle Dependent - stateFlow need coroutine scope to execure

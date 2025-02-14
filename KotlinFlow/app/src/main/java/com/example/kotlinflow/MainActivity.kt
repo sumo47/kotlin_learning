@@ -22,6 +22,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.flow
@@ -36,34 +37,30 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent { Text(text = "haha") }
 
+//        GlobalScope.launch(Dispatchers.Main) {
+//            val result = producer()
+//            delay(6000)
+//            result
+//                .collect { Log.d("sumit", "Consumer1 : $it") }
+//        }
         GlobalScope.launch(Dispatchers.Main) {
             val result = producer()
-            result
-                .collect { Log.d("sumit", "Consumer1 : $it") }
-        }
-
-        GlobalScope.launch(Dispatchers.Main) {
-            val result = producer()
-            delay(2500)
-            result
-                .collect { Log.d("sumit", "Consumer2: $it") }
+            Log.d("sumit", "value : ${result.value}")
         }
     }
-}
 
-// sharedFlow is Hot type of flow
-private fun producer(): Flow<Int> {
-    val mutableSharedFlow = MutableSharedFlow<Int>(replay = 2) // replay = 2 means late consumer will get previous 2 data form that point, if consumer will start to collect from 4 then they will get from 2
-    GlobalScope.launch {
-        val list = listOf(1, 2, 3, 4, 5)
-        list.forEach {
-            mutableSharedFlow.emit(it)
-            delay(1000)
+    // stateFlow is also hot nature
+// it store last value , whenever consumer will access data it will return last value
+//private fun producer(): Flow<Int> {
+    private fun producer(): StateFlow<Int> { // if we return stateFlow , than any consumer can check the value of stateFlow , in this case it is 10
+        val mutableStateFlow = MutableStateFlow(10)
+        GlobalScope.launch {
+            delay(2000)
+            mutableStateFlow.emit(20)
+            delay(2000)
+            mutableStateFlow.emit(30)
         }
+        return mutableStateFlow
 
     }
-    return mutableSharedFlow
-
 }
-
-// now if any consumer will take delay to collect emitted data , than they will lost previous data
