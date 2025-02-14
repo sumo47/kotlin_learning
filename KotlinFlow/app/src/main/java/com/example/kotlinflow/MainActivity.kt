@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.kotlinflow.ui.theme.KotlinFlowTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -31,11 +32,14 @@ class MainActivity : ComponentActivity() {
 //        }
 
         // Channel
-        producer()
-        consumer()
+//        producer()
+//        consumer()
         setContent {
-           Text(text = "haha")
+            Text(text = "haha")
         }
+        // Flow
+//       job
+        Consumers()
     }
 }
 

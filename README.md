@@ -149,7 +149,15 @@ fun sayHello (name:String = "Jatin"){
     - Channels are Hot - that means it send and receive data continously 
   - Flows (Emit & Collect)
     - Flows are mostly Cold = it Emit data when you want
-* Important Points
+* Important Points (Hot & Cold)
+  - Cold Streams are preferred over Hot Streams
+  - Resource Wastage in Hot stream
+  - Manual Close in Hot stream
+  - problem - one of them can become bottleneck (producer, consumer)
+  - Producer Consumer
+  - Bottleneck
+  - Asynchronous
+  - Cold
 * Kotlin Flows  
 
 
