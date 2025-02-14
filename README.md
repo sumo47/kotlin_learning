@@ -162,4 +162,5 @@ fun sayHello (name:String = "Jatin"){
 * `asFlow()` - is use to convert list to flow
 * `measureTimeMillis` - is use to measure time of execution of code
 * `buffer` - is use to remove bottleneck
-
+* if we emit in main thread and want to collect another thread , - it will gives error - to overcome it we use `FlowOn`
+* 
