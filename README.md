@@ -159,7 +159,7 @@ fun sayHello (name:String = "Jatin"){
   - Asynchronous
   - Cold
 * Kotlin Flows  
-
-
-
+* `asFlow()` - is use to convert list to flow
+* `measureTimeMillis` - is use to measure time of execution of code
+* `buffer` - is use to remove bottleneck
 

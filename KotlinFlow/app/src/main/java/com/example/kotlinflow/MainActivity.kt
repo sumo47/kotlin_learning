@@ -18,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -31,15 +33,29 @@ class MainActivity : ComponentActivity() {
 //            }
 //        }
 
-        // Channel
+        // Channel----
 //        producer()
 //        consumer()
         setContent {
             Text(text = "haha")
         }
-        // Flow
+        // Flow-----
 //       job
-        Consumers()
+//        Consumers()
+//        FlowOperators()
+
+        //Flow Operation Example ----
+//        CoroutineScope(Dispatchers.Main).launch {
+//            getNotes()
+//                .map { FormattedNote(it.isActive, it.title, it.description) }
+//                .filter { it.isActive }
+//                .collect { Log.d("sumit", it.toString()) }
+//        }
+
+        // Buffer ----
+        buffer()
+
+
     }
 }
 
