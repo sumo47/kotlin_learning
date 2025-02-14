@@ -95,3 +95,63 @@ fun sayHello (name:String = "Jatin"){
     - Flow - it is stream of flow data , so we can collect data asynchronously
 3. Database - it is main access point of database
 
+# Flow 
+   - What is Kotlin flow?
+   - Need of Kotlin flows.
+   - Examples
+* Coroutines - 
+  - Cotoutines helps to implement asynchronous, non blocking code.
+  - For this we use - Suspend Functions.
+  - Either you fire and forget using launch or wait for data(i.e. single object) using async.
+  ```kotlin 
+  // launch - fire and forget
+  suspend fun deleteUser(){
+    CoroutineScope(Dispatchers.Io).launch{
+      //network call
+    }
+  }  
+  ```
+  ```kotlin
+  // async - wait for data
+  suspend fun createUser() : User
+  {
+    val user = CoroutineScope(Dispatchers.IO).async{
+      //network call
+    }
+    return user.await()
+  }
+  ```
+  - Suspend functions only return a single Object
+  ```kotlin
+  suspend fun getUsere() : User
+  {
+    //network call
+    return User
+  }
+  ```
+  ```kotlin
+  suspend fun getUser() : List<User>
+  {
+    // network call
+    return list
+  }
+  ```
+  - Suspend functions work great for things like - 
+    - Storing some value in database
+    - Network calls
+    - Doing task that returns single value
+  - But there are scenarios where you save streams of data - 
+    - Video Sreaming 
+    - FM radio
+    - Mobile sending audio signals to Bluetooth speakers
+  - Kotlin has asynchronous stream support using Channels & Flows.
+  - Channels (Send & Receive)
+    - Channels are Hot - that means it send and receive data continously 
+  - Flows (Emit & Collect)
+    - Flows are mostly Cold = it Emit data when you want
+* Important Points
+* Kotlin Flows  
+
+
+
+
