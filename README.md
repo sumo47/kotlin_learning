@@ -210,8 +210,8 @@ fun sayHello (name:String = "Jatin"){
 * Coroutines run on top of Threads.
 
 * Coroutines 
- - Coroutine Scope - Lifetime
- - Coroutine Context - Threads
+ - Coroutine Scope - Lifetime 
+ - Coroutine Context - Threads - it defines that in which thread coroutine will execute
 
 * Dispatchers
  - Coroutines run on top of threads
@@ -224,10 +224,40 @@ fun sayHello (name:String = "Jatin"){
   - CoroutineScope
   - GlobalScope
   - MainScope
+* COROUTINE BASIC SYNTAX
+```kotlin
+CoroutineScope(Dispatchers.IO).launch {
+    // code
+}
+```
+* THREADS & COROUTINES
+```kotlin
+// Thread
+fun executeTask(view:View)
+{
+  thread(start = true) {
+     executeLongRunningTask()
+   }
+}
+```
+to 
 
-
-
-
+```kotlin
+// coroutine
+fun executeTask(view:View)
+{
+  CoroutineScope(Dispatchers.IO).launch {
+    executeLongRunningTask()
+  }
+}
+```
+* Coroutines helps to implement functionality that can be suspended & and later resumed
+at specified points without blocking the thread
+* Suspending Functions
+ - Functions with suspend modifier.
+ - Helps coroutine to suspend the computation at a particular point
+ - Suspendign functions must be called from either Coroutines or Other Suspending Function
+* suspension point - from where we define to suspend function
 
 
 
