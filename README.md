@@ -258,6 +258,31 @@ at specified points without blocking the thread
  - Helps coroutine to suspend the computation at a particular point
  - Suspendign functions must be called from either Coroutines or Other Suspending Function
 * suspension point - from where we define to suspend function
+* suspend function - `yield()`, `delay()`, etc
+
+* Agenda
+ - Coroutine Builders
+ - launch , async
+ - Examples
+
+* Coroutine Builders
+ - Coroutine Builders - Functions that help in creating coroutines
+ - We have already seen launch function.
+
+```kotlin
+CoroutineScope(Dispatchers.IO).launch{
+  // code
+}
+```
+* Job = it is use to manage coroutine
+* launch - is use to create instance of job
+* job.join() - is use to hold function until job has been done, like some operation will call only when job (db call ) will done
+
+* COROUTINE BUILDERS
+ - Use Launch - when you do not care about the result.(Fire & Forget)
+ - Use Async - when you expect result/output from your coroutine
+ - Although both can be used to achieve the same functionality but it is better to use things that are meant for it.
+
 
 
 

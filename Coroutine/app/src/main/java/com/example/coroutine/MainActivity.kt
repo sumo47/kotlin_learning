@@ -5,20 +5,11 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.coroutine.ui.theme.CoroutineTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.yield
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,25 +19,62 @@ class MainActivity : ComponentActivity() {
 
         }
         CoroutineScope(Dispatchers.Main).launch {
-            task1()
+            printFollowers()
         }
-        CoroutineScope(Dispatchers.Main).launch {
-            task2()
+
+    }
+
+
+//    private suspend fun printFollowers() {
+//        var fbFollowers = 0;
+//        val job = CoroutineScope(Dispatchers.IO).launch {
+//            fbFollowers = getFbFollowers()
+//        }
+//        // job will execute on coroutine so below code will execute first
+//        job.join() // now below code will execute when job will complete
+//        Log.d("sumit", fbFollowers.toString())
+//
+//    }
+//
+//    private suspend fun getFbFollowers(): Int {
+//        delay(100)
+//        return 54
+//    }
+
+
+    // we can do this using async await ---------------
+//    private suspend fun printFollowers() {
+//        val fbFollowers = CoroutineScope(Dispatchers.IO).async {
+//            getFbFollowers()
+//        }
+//        Log.d("sumit", fbFollowers.await().toString())
+//
+//    }
+//
+//    private suspend fun getFbFollowers(): Int {
+//        delay(100)
+//        return 54
+//    }
+
+    // we can run multiple parallel coroutine using async await ---------------
+    private suspend fun printFollowers() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val fbFollowers = async { getFbFollowers() } // takes 1 sec
+            val instaFollowers = async { getFbFollowers() } // takes 1 sec
+            Log.d( // takes 1 sec because both job running parallel
+                "sumit",
+                "fbFollowers: ${fbFollowers.await()} , instaFollowers: ${instaFollowers.await()}"
+            )
         }
+
+    }
+
+    private suspend fun getFbFollowers(): Int {
+        delay(1000)
+        return 54
     }
 
 }
 
 
-suspend fun task1() {
-    Log.d("sumit", "task1 started")
-    yield()
-    Log.d("sumit", "task1 ended")
-}
-
-suspend fun task2() {
-    Log.d("sumit", "task2 started")
-    yield()
-    Log.d("sumit", "task2 ended")
-}
 
