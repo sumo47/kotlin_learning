@@ -282,7 +282,28 @@ CoroutineScope(Dispatchers.IO).launch{
  - Use Launch - when you do not care about the result.(Fire & Forget)
  - Use Async - when you expect result/output from your coroutine
  - Although both can be used to achieve the same functionality but it is better to use things that are meant for it.
+* launch returns job
+* async return deffered , (basically deffered inherit job)
 
+* if we have parent and child coroutine , than both will execute on once thread , until we explicitly mention for child job to execute another thread
+* if we cancel parent job than all child job will cancel
+* if we want to cancel child job based on condition , we can do it
+
+* Agenda
+ - withContext
+ - runBlocking
+ - Examples
+* withContext - this is blocking code - it will block coroutine
+* job.sleep() - is use to block coroutine 
+* runBlocking -it is global scope-  is use to block thread until coroutine completed
+
+* Agenda
+ - ViewModelScope
+ - LifeCycleScope
+ - Examples
+* VIEWMODELSCOPE 
+  - Coroutine scope attached with your View Models.
+  - Coroutines in this scope will be cancelled automatically when viewmodel is cleared. We don't need to manually cancel the coroutines.
 
 
 
