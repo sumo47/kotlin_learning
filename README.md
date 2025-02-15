@@ -304,6 +304,11 @@ CoroutineScope(Dispatchers.IO).launch{
 * VIEWMODELSCOPE 
   - Coroutine scope attached with your View Models.
   - Coroutines in this scope will be cancelled automatically when viewmodel is cleared. We don't need to manually cancel the coroutines.
+* LIFECYCLESCOPE - 
+ - Coroutine scope attached with lifecycle (Activity or Fragments)
+ - Coroutines in this scope will be cancelled automatically when lifecycle is destroyed. We don't need to manually cancel the coroutines.
+
+
 
 
 
