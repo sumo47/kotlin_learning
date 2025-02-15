@@ -8,7 +8,9 @@ import androidx.activity.enableEdgeToEdge
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -18,60 +20,37 @@ class MainActivity : ComponentActivity() {
         setContent {
 
         }
-        CoroutineScope(Dispatchers.Main).launch {
-            printFollowers()
-        }
-
-    }
-
-
-//    private suspend fun printFollowers() {
-//        var fbFollowers = 0;
-//        val job = CoroutineScope(Dispatchers.IO).launch {
-//            fbFollowers = getFbFollowers()
-//        }
-//        // job will execute on coroutine so below code will execute first
-//        job.join() // now below code will execute when job will complete
-//        Log.d("sumit", fbFollowers.toString())
-//
-//    }
-//
-//    private suspend fun getFbFollowers(): Int {
-//        delay(100)
-//        return 54
-//    }
-
-
-    // we can do this using async await ---------------
-//    private suspend fun printFollowers() {
-//        val fbFollowers = CoroutineScope(Dispatchers.IO).async {
-//            getFbFollowers()
-//        }
-//        Log.d("sumit", fbFollowers.await().toString())
-//
-//    }
-//
-//    private suspend fun getFbFollowers(): Int {
-//        delay(100)
-//        return 54
-//    }
-
-    // we can run multiple parallel coroutine using async await ---------------
-    private suspend fun printFollowers() {
         CoroutineScope(Dispatchers.IO).launch {
-            val fbFollowers = async { getFbFollowers() } // takes 1 sec
-            val instaFollowers = async { getFbFollowers() } // takes 1 sec
-            Log.d( // takes 1 sec because both job running parallel
-                "sumit",
-                "fbFollowers: ${fbFollowers.await()} , instaFollowers: ${instaFollowers.await()}"
-            )
+            execute()
         }
 
     }
 
-    private suspend fun getFbFollowers(): Int {
-        delay(1000)
-        return 54
+    private suspend fun execute() {
+        val parentJob = CoroutineScope(Dispatchers.IO).launch {
+
+            for (i in 1..1000) {
+                if (isActive) {
+                    ExecuteLongRunningTask()
+                    Log.d("sumit", i.toString())
+                }
+
+            }
+        }
+        delay(100)
+        Log.d("sumit", "Canceling Job")
+        parentJob.cancel() // job should be cancel but it is not happening
+        // because job busy to execute the task
+        // we need to check the job is active or not
+        // so if job is not active then it will not execute
+        parentJob.join()
+        Log.d("sumit", "Parent Job Completed")
+    }
+
+    private fun ExecuteLongRunningTask() {
+        for (i in 1..1000000000) {
+
+        }
     }
 
 }
