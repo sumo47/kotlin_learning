@@ -169,4 +169,75 @@ fun sayHello (name:String = "Jatin"){
 * LIVEDATA VS STATEFLOW
   1. Transformations of Mian thread - sateFlow can execure on worker thread
   2. Operators - stateFlow have many operators
-  3. LifeCycle Dependent - stateFlow need coroutine scope to execure
+  3. LifeCycle Dependent - stateFlow need csoroutine scope to execure
+
+# Coroutine
+* Agenda
+  1. Basic Terminology
+  2. Coroutine Introduction
+  3. Need of Coroutines
+
+* Basic Concepts
+ - Program
+ - Process (Actual Instance of your program)
+   - Process Id
+   - State
+   - Memory
+   - Handles for Networking, File System etc.
+   - Thread (i.e. Thread Of Execution)
+ - Sequential Execution -
+   - Process - Instruction 1 -> Instruction 2 -> Instruction 3
+   - all instructions execute in sequence - that means all instruction runs in one thread
+   - if we want to execute one of instruction in another thread we use `coroutine`
+ - What type of Instruction are we execution these days? - I/O oprations
+ - Can we just re-use the thread when it is waiting for some response or IO operations?
+* Coroutine - Cooperating functions
+ - Executed inside a thread
+ - One thread can have many coroutines
+ - cheap
+* Agenda
+ - Main Thread with Looper
+ - Background Threads
+ - coroutines Introduction
+
+* Looper - it basically checks message queue to execute task on main thread
+* Background Thread - Thread generally takes 2 mb , and how much thread we can run it depends on system
+* context switching - in Thread hard to switch some operation from one thread to another
+
+* What's solution in Java? - No Solution
+* What's solution in Kotlin - Coroutines
+* Coroutines are just like threads ( lightweight thread ) but not threads.
+* Coroutines run on top of Threads.
+
+* Coroutines 
+ - Coroutine Scope - Lifetime
+ - Coroutine Context - Threads
+
+* Dispatchers
+ - Coroutines run on top of threads
+ - Dispatchers is a way to define threads on which Coroutines are executed.
+ - Predefined Dispatchers - 
+   - Dispatchers.IO
+   - Dispatchers.Main
+   - Dispatchers.Default
+* coroutine scope - 
+  - CoroutineScope
+  - GlobalScope
+  - MainScope
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
