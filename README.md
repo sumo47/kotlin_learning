@@ -308,7 +308,65 @@ CoroutineScope(Dispatchers.IO).launch{
  - Coroutine scope attached with lifecycle (Activity or Fragments)
  - Coroutines in this scope will be cancelled automatically when lifecycle is destroyed. We don't need to manually cancel the coroutines.
 
+# Android Architecture
 
+* Brief Overview of Architecture Componenets
+* Problems with existing system
+* What is Jetpack?
+  
+* Android Architecture Components
+  - Android has a component-based architecture - whare you use different components like Activities, Fragments, Services, etc.
+  - It is Android that manages these components for you.
+  - Till now , we have been writing code in our android activities or fragments for all purposes - whether it is data fetching or storing data in SQLite.
+  - This is where the Problem lies.
+* previous architecture
+   - MVC
+   - MVP
+   - MVVM
+* Architecture helps 
+   - Separation of Concerns.
+   - Data Driven Applications - based on Data, UI will change
+* Overall
+   - Collection of Libraries that helps build robust, testable and maintainable android apps
+   - Less Boilerplate code - Room , Navigation Components, Paging etc.
+   - High Quality, Production Ready Apps.
+* Examples - 
+   - Data Binding
+   - ViewModel
+   - LiveData
+   - Room Database
+   - Navigaiton Component
+   - Work Manager
+   - Paging
+* Fun Fact
+  - Jetpack is a booster for your android apps. You can use these libraries to boost your android apps development process and build production ready apps.
+
+# LifeCycle Aware Components
+* Most of the code is wirtten inside Activity LifeCycle Methods - onCreate, onReasume, onPause etc. Due to this, Activity has multiple responsibilities.
+* But there are scenarios where we want to take actions based on the activity lifecycle.
+* For e.g.
+   - Access the User's Location
+   - Playing Video.
+   - Downloading Images.
+* LifeCycle Aware Components
+   - LifeCycle Owner - Activity lifeCycle owner
+     - send info to observer
+     ```kotlin
+         override fun onResume() {
+           super.onResume()
+           Log.d("sumit", "Activity OnResume")
+          }
+     ```
+   - LifeCycle Observer - can observer activity lifecycle
+     - @onLifecycleEvent
+      ```kotlin
+       @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+           fun onCreate() {
+            Log.d("sumit", "OBSERVER - ON CREATE")
+           }
+    ```
+* 
+  
 
 
 
