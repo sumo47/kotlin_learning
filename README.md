@@ -365,7 +365,41 @@ CoroutineScope(Dispatchers.IO).launch{
             Log.d("sumit", "OBSERVER - ON CREATE")
            }
     ```
-* 
+# ViewModel
+* What is ViewModel?
+* Need of ViewModel
+* Examples
+
+* without viewModel  our variable will be not retain when activity will destroy , like in rotate
+
+* Model for your views such as Activity or Fragment.
+* View Models are lifecycle aware.
+* Data required for your screen is stored at one place i.e. ViewModel. It may involve formatting that data in a particular format, accumulating data , any login in displaying this data in your UI.
+* viewModel needs
+   - lifecycel owner
+   - which class object we want
+
+# LiveData
+* Observable Data Holder Class
+* Lifecycle aware - it will send updata when activity is alive
+
+# Room Database
+ * Abstraction over SQLite
+ * Less Boilerplate
+ * Compile Time Verification of SQL Queries
+
+* components of Room Database
+   - Entities(Tables) - if we can multiple table so we have multiple Entities
+   - DAO (Data Access Objects) 
+     - Interface containing methods to access database - CRUD Operations
+     - We can define multiple DAOs
+   - Database
+   - Type Convertors
+   - Migrations
+  
+* kept - annotation processor
+* room always execute livedata in background thread
+
   
 
 
