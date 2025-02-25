@@ -384,7 +384,7 @@ CoroutineScope(Dispatchers.IO).launch{
 * Lifecycle aware - it will send updata when activity is alive
 
 # Room Database
- * Abstraction over SQLite
+ * Abstraction over SQLite (file based RDBMS)
  * Less Boilerplate
  * Compile Time Verification of SQL Queries
 
@@ -396,9 +396,26 @@ CoroutineScope(Dispatchers.IO).launch{
    - Database
    - Type Convertors
    - Migrations
+
+* USE room db
+   - You create an abstract class that extends RoomDatabase. 
+   - Annotate this class with @Database where you provide the list of entities and the database version. 
+   - Within this class, you define abstract methods to access Data Access Objects (DAOs) which will be used to interact with the database. 
   
 * kept - annotation processor
 * room always execute livedata in background thread
+  
+* Room Type Convertors
+* Singleton Patternl̥
+* Examples
+  
+* Type Convertors
+   - SQLite only supports -
+     1. NULL
+     2. INTEGER
+     3. REAL
+     4. TEXT
+     5. BLOB
 
   
 

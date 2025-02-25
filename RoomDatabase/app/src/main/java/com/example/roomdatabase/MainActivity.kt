@@ -187,21 +187,3 @@ fun NoteCard(note: Note , viewModel :NoteViewModel) {
         }
     }
 }
-
-@Preview
-@Composable
-fun line (){
-    Row (
-        modifier = Modifier.fillMaxWidth(),
-        horizontalArrangement = Arrangement.Absolute.SpaceBetween
-    ){
-        Text(
-            text = "📌 this is note",
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            color = MaterialTheme.colorScheme.primary
-        )
-        Icon(Icons.Filled.Delete, contentDescription = "Delete Note", tint = Color.Red)
-
-    }
-}
