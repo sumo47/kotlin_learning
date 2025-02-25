@@ -15,4 +15,9 @@ fun main() {
     println(arr[0])
     println(arr.size)
     //    println(arr[3])
+
+    println(arr) // output - [Ljava.lang.String;@2ff4acd0  
+    // by default arr.toString() calls , so it prints refrence of array
+    
+    println(arr.contentToString()) 
 }
